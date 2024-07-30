@@ -1,0 +1,23 @@
+
+body {
+    margin: 0;
+}
+
+.pages-list {
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -150%;
+}
+
+[active] {
+    left: 0;
+}

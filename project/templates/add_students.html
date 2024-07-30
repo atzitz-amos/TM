@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--suppress CssUnknownTarget -->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta content="user-scalable=no, max-scale=1.0" name="viewport">
+    <title>Index</title>
+
+    <link href="../resources/css/global.css" rel="stylesheet">
+    <link href="../resources/css/add_students.css" rel="stylesheet">
+
+    <script src="../resources/js/anims.js"></script>
+    <script src="../resources/js/add_students.js"></script>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/56ede3712c.js"></script>
+</head>
+<body>
+<div class="taskbar">
+    <div class="taskbar-name">
+        Nom de l'app, encore inconnu
+    </div>
+</div>
+<div class="content">
+    <div class="header">Ajouter un &eacute;l&egrave;ve</div>
+    <div class="list">
+        <div class="box">
+            <div class="box-icon-holder">
+                <div class="box-icon box-M">
+                    <div class="box-icon-content" style="font-size:24em;">JM</div>
+                </div>
+            </div>
+            <div class="box-name"></div>
+        </div>
+        <form action="/add-student" autocomplete="off" class="input-forms-container" method="post">
+            <div class="input-form" data-placeholder="nom" id="f0">
+                <input class="input-form-input" name="name" required type="text"/>
+                <div class="if-selected-bborder"></div>
+            </div>
+            <div class="input-form" data-placeholder="genre" id="f1">
+                <input class="input-form-input" name="gender" readonly required type="text"/>
+                <div class="form-options">
+                    <div class="input-option">Masculin</div>
+                    <div class="input-option">F&eacute;minin</div>
+                </div>
+                <i class="input-marker fa fa-solid fa-chevron-up"></i>
+                <div class="if-selected-bborder"></div>
+            </div>
+            <div class="input-form" data-placeholder="langues" id="f2">
+                <input class="input-form-input" name="language" readonly required type="text"/>
+                <div class="form-options">
+                    <div class="input-option">Allemand</div>
+                </div>
+                <i class="input-marker fa fa-solid fa-chevron-up"></i>
+                <div class="if-selected-bborder"></div>
+            </div>
+            <div class="add-students-button">Ajouter</div>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <div class="floating-footer-border">
+        <div class="floating-footer">
+            <div active class="footer-button footer-language-button" onclick="animateFromStudents(400)">Langues</div>
+            <div class="footer-main-border">
+                <div class="footer-main">
+                    <div class="footer-main-button">
+                        <i class="fa fa-solid fa-home"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-button footer-students-button" onclick="animateFromLanguage(400)">&Eacute;l&egrave;ves
+            </div>
+            <svg class="footer-svg">
+                <path d="" fill="transparent" id="path-1" stroke="#464E3E" stroke-width="12px"/>
+                <path d="" fill="transparent" id="path-2" stroke="#464E3E" stroke-width="12px"/>
+            </svg>
+        </div>
+    </div>
+</div>
+</body>
+</html>
