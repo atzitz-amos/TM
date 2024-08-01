@@ -69,6 +69,7 @@ window.addEventListener("load", () => {
             invalid = true;
         }
 
+
         if (!invalid) {
             document.querySelector(".input-forms-container").submit();
         }

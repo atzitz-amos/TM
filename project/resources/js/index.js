@@ -1,3 +1,25 @@
+let getInitials = function (name) {
+    let parts = name.split(' ')
+    let initials = ''
+    for (let i = 0; i < parts.length; i++) {
+        if (parts[i].length > 0 && parts[i] !== '') {
+            initials += parts[i][0]
+        }
+    }
+    return initials.length <= 2 ? initials : initials[0] + initials[initials.length - 1]
+}
+
+// Configure the animations
+let __defaultHash = "language";
+let __animationsMap = animationsMap({
+    "language->students": animateLanguageToStudents,
+    "students->language": animateStudentsToLanguage,
+    "students->add-students": animateStudentsToAddStudents,
+    "language->add-students": animateLanguageToAddStudents,
+    "add-students->language": animateAddStudentsToLanguage,
+    "add-students->students": animateAddStudentsToStudents
+});
+
 window.addEventListener("load", () => {
     let f0 = document.querySelector("#f0 .input-form-input");
     let f1 = document.querySelector("#f1 .input-form-input");
@@ -15,7 +37,7 @@ window.addEventListener("load", () => {
             f.parentElement.classList.remove("invalid");
 
             if (f === f1) {
-                let b = document.querySelector(".box-icon");
+                let b = document.querySelector("#content-add-students .box-icon");
                 if (element.textContent === "Féminin") {
                     b.classList.remove("box-M");
                     b.classList.add("box-F");
@@ -30,7 +52,9 @@ window.addEventListener("load", () => {
     });
 
     f0.addEventListener("input", () => {
-        document.querySelector(".box-name").textContent = f0.value;
+        console.log(f0.value)
+        document.querySelector("#content-add-students .box-name").textContent = f0.value;
+        document.querySelector("#content-add-students .box-icon-content").textContent = getInitials(f0.value).toUpperCase();
         f0.parentElement.classList.remove("invalid");
     });
 
@@ -44,7 +68,6 @@ window.addEventListener("load", () => {
         });
 
         element.addEventListener("blur", () => {
-            console.log("1");
             element.parentElement.classList.remove("opened");
         });
     });
@@ -70,6 +93,7 @@ window.addEventListener("load", () => {
         }
 
         if (!invalid) {
+            f1.value = f1.value === "Féminin" ? "F" : "M";
             document.querySelector(".input-forms-container").submit();
         }
     });
@@ -79,4 +103,41 @@ window.addEventListener("load", () => {
             window.location.href = `./choose_gender.html#${element.dataset.lang}`;
         });
     });
-}, true);
+
+    let http = new XMLHttpRequest();
+    http.open("GET", "/api/students");
+    http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+            let students = JSON.parse(http.responseText);
+            let container = document.querySelector("#students-list");
+            students.forEach((student) => {
+                let box = document.createElement("div");
+                box.classList.add("box");
+                let box_icon_holder = document.createElement("div");
+                box_icon_holder.classList.add("box-icon-holder");
+                let box_icon = document.createElement("div");
+                box_icon.classList.add("box-icon");
+                box_icon.classList.add("box-" + student.gender);
+                let box_icon_name = document.createElement("div");
+                box_icon_name.classList.add("box-icon-content");
+                box_icon_name.style.fontSize = "24em";
+                box_icon_name.textContent = getInitials(student.name).toUpperCase();
+                let box_name = document.createElement("div");
+                box_name.classList.add("box-name");
+                box_name.textContent = student.name;
+
+                box_icon.appendChild(box_icon_name);
+                box_icon_holder.appendChild(box_icon);
+                box.appendChild(box_icon_holder);
+                box.appendChild(box_name);
+                container.appendChild(box);
+
+
+                box.addEventListener("click", () => {
+                    window.location.href = `/choose_theme.html#${student.language}-${student.gender}`
+                })
+            }, true);
+        }
+    };
+    http.send();
+});

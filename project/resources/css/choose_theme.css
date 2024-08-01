@@ -93,6 +93,6 @@
     box-shadow: -7px -7px 20px 0 black;
 }
 
-.box-container.active-theme ~ .confirm-button {
+.theme-list:has(> .box-container.active-theme) .confirm-button {
     display: flex;
 }

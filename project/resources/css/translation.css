@@ -1,20 +1,23 @@
 
+.content {
+    position: relative;
+}
+
 .footer-main-button {
     padding-top: 15px;
 }
 
 .translation-section {
-    height: 1px;
-    flex-grow: 2;
-
     padding: 50px;
+    height: 30vh;
 }
 
 .list-section {
-    height: 1px;
-    flex-grow: 3;
-
+    height: 50vh;
     padding: 50px;
+    position: absolute;
+    left: -150%;
+    top: 40%;
 }
 
 .section {
