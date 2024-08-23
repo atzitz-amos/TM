@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--suppress CssUnknownTarget -->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta content="user-scalable=no, maximum-scale=1.0" name="viewport">
+    <title>Index</title>
+
+    <link href="../resources/css/global.css" rel="stylesheet">
+    <link href="../resources/css/translation.css" rel="stylesheet">
+
+    <script src="../resources/js/hark.bundle.js"></script>
+    <script src="../resources/js/anims_base.js"></script>
+    <script src="../resources/js/translation.js"></script>
+    <script src="../resources/js/anims.js"></script>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/56ede3712c.js"></script>
+</head>
+<body>
+<div class="taskbar">
+    <div class="taskbar-icon">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+    <div class="taskbar-name" style="font-size: 3.5em;">
+        Fran&ccedil;ais
+        <i class="taskbar-chevron fas fa-chevron-right"></i>
+        <span class="taskbar-current-language"></span>
+        <i class="taskbar-chevron fas fa-chevron-right"></i>
+        <span class="taskbar-current-theme"></span>
+    </div>
+</div>
+<div class="content">
+    <div class="translation-section">
+        <div class="section" data-placeholder="Vouliez vous dire?">
+            <div class="section-header">Appuyez sur le microphone pour d&eacute;marrer l&apos;enregistrement...</div>
+        </div>
+    </div>
+    <div class="list-section" id="content-questions" style="left: 0;">
+        <div class="section content-questions" data-placeholder="Questions">
+            <div class="search-bar">
+                <input autocomplete="off" class="search-bar-input" name="q" placeholder="Rechercher..." type="text">
+                <button class="search-bar-submit fas fa-search"></button>
+            </div>
+            <div class="content-list">
+
+            </div>
+        </div>
+    </div>
+    <div class="list-section" id="content-answers">
+        <div class="section content-answers" data-placeholder="Réponses">
+            <div class="search-bar">
+                <input autocomplete="off" class="search-bar-input" name="q" placeholder="Rechercher..." type="text">
+                <button class="search-bar-submit fas fa-search"></button>
+            </div>
+            <div class="content-list">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="floating-footer-border">
+        <div class="floating-footer">
+            <div active class="footer-button footer-left-button">
+                <a href="#questions">Questions</a></div>
+            <div class="footer-main-border">
+                <div class="footer-main">
+                    <div class="footer-main-button">
+                        <i class="fa fa-solid fa-microphone"></i>
+                    </div>
+                    <svg class="mic-anim-svg">
+                        <path class="anim-bar" d="" id="bar-1"></path>
+                        <path class="anim-bar" d="" id="bar-2"></path>
+                        <path class="anim-bar" d="" id="bar-3"></path>
+                        <path class="anim-bar" d="" id="bar-4"></path>
+                        <path class="anim-bar" d="" id="bar-5"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="footer-button footer-right-button"><a href="#answers">R&eacute;ponses</a>
+            </div>
+            <svg class="footer-svg">
+                <path d="" fill="transparent" id="path-1" stroke="#464E3E" stroke-width="12px"/>
+                <path d="" fill="transparent" id="path-2" stroke="#464E3E" stroke-width="12px"/>
+            </svg>
+        </div>
+    </div>
+</div>
+</body>
+</html>
