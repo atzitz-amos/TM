@@ -67,7 +67,7 @@ def build_model(db_path):
             Embedding(len(vectorizer_layer.get_vocabulary()), 64, mask_zero=True),
             GlobalAveragePooling1D(),
             Dense(64, activation='relu'),
-            Dense(len(labels), activation='softmax')
+            Dense(len(labels))
         ])
 
         tensorflow_callback = keras.callbacks.TensorBoard(log_dir="./logs")
@@ -76,8 +76,10 @@ def build_model(db_path):
                       loss=tf.losses.BinaryCrossentropy(from_logits=True),
                       metrics=['accuracy'])
 
-        model.fit(train, validation_data=test, epochs=10, callbacks=[tensorflow_callback])
+        model.fit(train, validation_data=test, epochs=50, callbacks=[tensorflow_callback])
         model.summary()
+
+        print("evaluate:", model.evaluate(*test))
 
         return model
 
@@ -89,5 +91,6 @@ if __name__ == "__main__":
     import tensorflow as tf
 
     md, train_set, test_set, labels = build_model("resources/data/db.db")
-    prediction = ["J'aime les pommes"]
-    print(f"Prediction on: `{prediction[0]}`, for labels {labels} \n\t= ", md.predict(tf.convert_to_tensor(prediction)))
+    prediction = ["Tu veux que je te change?"]
+    md_predict = md.predict(tf.convert_to_tensor(prediction))
+    print(f"Prediction on: `{prediction[0]}`, for labels {labels} \n\t= ", md_predict, "\n\t= ", labels[tf.argmax(md_predict[0])])

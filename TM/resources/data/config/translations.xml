@@ -1,7 +1,61 @@
 <source>
-    <entry source-id="0">
-        <target lang="DE" resource-audio="/audio/translations/0.mp3">
-            Musst du auf die Toilette?
-        </target>
+    <entry source-id="0"/>
+    <entry source-id="1">
+        <target lang="DE" resource-audio="/audio/translations/DE/1.mp3">Zeig mir!</target>
     </entry>
+    <entry source-id="2"/>
+    <entry source-id="3"/>
+    <entry source-id="4"/>
+    <entry source-id="5"/>
+    <entry source-id="6"/>
+    <entry source-id="7"/>
+    <entry source-id="8"/>
+    <entry source-id="9"/>
+    <entry source-id="10"/>
+    <entry source-id="11"/>
+    <entry source-id="12"/>
+    <entry source-id="13"/>
+    <entry source-id="14"/>
+    <entry source-id="15"/>
+    <entry source-id="16"/>
+    <entry source-id="17"/>
+    <entry source-id="18"/>
+    <entry source-id="19"/>
+    <entry source-id="20"/>
+    <entry source-id="21"/>
+    <entry source-id="22"/>
+    <entry source-id="23"/>
+    <entry source-id="24"/>
+    <entry source-id="25"/>
+    <entry source-id="26"/>
+    <entry source-id="27"/>
+    <entry source-id="28"/>
+    <entry source-id="29"/>
+    <entry source-id="30"/>
+    <entry source-id="31"/>
+    <entry source-id="32"/>
+    <entry source-id="33"/>
+    <entry source-id="34"/>
+    <entry source-id="35"/>
+    <entry source-id="36"/>
+    <entry source-id="37"/>
+    <entry source-id="38"/>
+    <entry source-id="39"/>
+    <entry source-id="40"/>
+    <entry source-id="41"/>
+    <entry source-id="42"/>
+    <entry source-id="43"/>
+    <entry source-id="44"/>
+    <entry source-id="45"/>
+    <entry source-id="46"/>
+    <entry source-id="47"/>
+    <entry source-id="48"/>
+    <entry source-id="49"/>
+    <entry source-id="50"/>
+    <entry source-id="51"/>
+    <entry source-id="52"/>
+    <entry source-id="53"/>
+    <entry source-id="54"/>
+    <entry source-id="55"/>
+    <entry source-id="56"/>
 </source>

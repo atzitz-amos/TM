@@ -7,23 +7,22 @@ from xml.etree import ElementTree as ET
 
 def parse_xml(xml_file):
     tree = ET.parse(xml_file)
+    tree_decl = tree.find("decl")
+    tree_src = tree.find("src")
 
     variables = {}
     questions = {}
 
-    for var in tree.findall('variable'):
+    for var in tree_decl.findall('variable'):
         variables[var.find("name").text] = [x.text for x in var.find("source").findall("v")]
-    for question in tree.findall('question'):
+    for question in tree_src.findall('question'):
         config = question.find("config")
         questions[(config.find("id").text, config.find("theme").text, 0)] = [x.text for x in
-                                                                             question.find(
-                                                                                 "source").findall(
-                                                                                 "v")]
-    for answer in tree.findall('answer'):
+                                                                             question.find("source").findall("v")]
+    for answer in tree_src.findall('answer'):
         config = answer.find("config")
         questions[(config.find("id").text, config.find("theme").text, 1)] = [x.text for x in
-                                                                             answer.find(
-                                                                                 "source").findall("v")]
+                                                                             answer.find("source").findall("v")]
 
     return variables, questions
 
@@ -125,6 +124,12 @@ Literal = namedtuple("Literal", ["value"])
 Variable = namedtuple("Variable", ["choices"])
 
 
+def remove_duplicate_spaces(x):
+    while "  " in x:
+        x = x.replace("  ", " ")
+    return x
+
+
 class Parser:
     def __init__(self, filename):
         self.variables, self.questions = parse_xml(filename)
@@ -212,7 +217,7 @@ class Parser:
         return to_string(result), variables
 
     def expand(self, string, src_vars):
-        """ Collapse all the variables into a single list """
+        """ Expand all the variables into a single list """
 
         def expand_single(val, present_vars: dict[str, list]):
             z = defaultdict(list)
@@ -226,7 +231,7 @@ class Parser:
                 res.append(val.format(**dict(zip(z.keys(), x))))
             return res
 
-        return expand_single(*string)
+        return [remove_duplicate_spaces(x) for x in expand_single(*string)]
 
     def build_source(self, s, var):
         return self.expand(*self.transform_to_string(self.collapse_(s, var)))
