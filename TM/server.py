@@ -21,7 +21,7 @@ print(allowed_files)
 
 DB_PATH = "./resources/data/db.db"
 
-should_setup = False
+should_setup = True
 if should_setup:  # Set to false after first run to remove the necessity of another configuration
     config.setup(DB_PATH, hard=True)
 

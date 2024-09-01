@@ -50,12 +50,12 @@
                 <v>"Avez-vous envie de"</v>
                 <v>"Est-ce que tu as envie de"</v>
                 <v>"Est-ce que vous avez envie de"</v>
-                <v>Tu dois</v>
-                <v>Vous devez</v>
-                <v>Est-ce que tu dois</v>
-                <v>Est-ce que vous devez</v>
-                <b>Dois-tu</b>
-                <b>Devez-vous</b>
+                <v>"Tu dois"</v>
+                <v>"Vous devez"</v>
+                <v>"Est-ce que tu dois"</v>
+                <v>"Est-ce que vous devez"</v>
+                <b>"Dois-tu"</b>
+                <b>"Devez-vous"</b>
             </source>
         </variable>
         <variable>
@@ -89,5 +89,539 @@
 
 
     <src>
-        <question><config><id>0</id><theme>3</theme></config><source><v>("C'est où que" | "Où") ${avoir-interrogatif} "mal?"</v></source></question><answer><config><id>1</id><theme>3</theme></config><source><v>"Montre-moi."</v></source></answer><question><config><id>2</id><theme>3</theme></config><source><v>${etre-neutre-interrogatif} ${camarades} "qui t'as fait ça"? "?"</v></source></question><question><config><id>3</id><theme>3</theme></config><source><v>${avoir-interrogatif} "faim?"</v><v>${avoir-besoin} "manger" "quelque chose"? "?"</v></source></question><question><config><id>4</id><theme>3</theme></config><source><v>${avoir-interrogatif} ("envie" | "besoin") "de vomir?"</v></source></question><question><config><id>5</id><theme>3</theme></config><source><v>${etre-neutre-interrogatif}? "quelqu'un" "qui"? "t'as" ("frappé?" | "tapé?") </v></source></question><question><config><id>6</id><theme>3</theme></config><source><v>${etre-neutre-interrogatif}? "quand que t'as bu" "pour la dernière fois"? "?"</v><v>"ça fait longtemps que tu n'as pas bu?"</v><v>"Depuis combien de temps n'as-tu pas bu?"</v></source></question><question><config><id>7</id><theme>3</theme></config><source><v>("Es-tu" | "Tu es") "fatigué?"</v><v>${avoir-besoin} "de dormir?"</v></source></question><question><config><id>8</id><theme>3</theme></config><source><v>${avoir-besoin} ("te coucher" | "t'allonger" | "faire une sieste") "un moment"? "?" </v></source></question><question><config><id>9</id><theme>3</theme></config><source><v>${avoir-besoin} ("t'asseoir" | "te mettre") "sur les coussins"? "là-bas"? "un moment"? "?"</v></source></question><question><config><id>10</id><theme>3</theme></config><source><v>${avoir-besoin} ("t'asseoir" | "te mettre") "sur les coussins"? "là-bas"? "un moment"? "avec un doudou" "?"</v></source></question><question><config><id>11</id><theme>3</theme></config><source><v>${avoir-besoin} ("quelque chose à boire" | "boire" | "boire quelque chose" | "un verre d'eau") "?"</v></source></question><question><config><id>12</id><theme>3</theme></config><source><v>${avoir-besoin} "moucher?"</v></source></question><question><config><id>13</id><theme>3</theme></config><source><v>${avoir-interrogatif} "froid?"</v></source></question><question><config><id>14</id><theme>3</theme></config><source><v>${avoir-interrogatif} "trop"? "chaud?"</v></source></question><question><config><id>15</id><theme>3</theme></config><source><v>${avoir-besoin} "enlever" ("ton pull" | "ta jacquette")</v></source></question><answer><config><id>16</id><theme>3</theme></config><source><v>"viens,"? "on va" ("mettre" | "passer") "ta main sous l'eau?" </v></source></answer><question><config><id>17</id><theme>3</theme></config><source><v>${avoir-interrogatif} "mal au pied?"</v></source></question><question><config><id>18</id><theme>3</theme></config><source><v>${avoir-interrogatif} "mal à la jambe?"</v></source></question><question><config><id>19</id><theme>3</theme></config><source><v>${avoir-interrogatif} "mal au bras?"</v></source></question><question><config><id>20</id><theme>3</theme></config><source><v>${avoir-interrogatif} "mal à la tête?"</v></source></question><question><config><id>21</id><theme>3</theme></config><source><v>${avoir-interrogatif} "mal au ventre?"</v></source></question><question><config><id>22</id><theme>3</theme></config><source><v>${avoir-interrogatif} "mal à la gorge?"</v></source></question><question><config><id>23</id><theme>3</theme></config><source><v>"c'est"? "ici" "que tu as mal"? "?"</v></source></question><question><config><id>24</id><theme>0</theme></config><source><v>${camarades} ("ne veut pas" | "n'as pas envie" | "refuse" | "n'est pas d'accord" | "n'as pas voulu") "jouer avec toi?"</v></source></question><question><config><id>25</id><theme>0</theme></config><source><v>${camarades} ("a prit" | "t'as piqué" | "t'as volé") ("un de tes" | "ton") "jouet?"</v></source></question><question><config><id>26</id><theme>0</theme></config><source><v>${camarades} ("a prit" | "t'as piqué" | "t'as volé") ("un des" | "le") "jouet?" ("avec lequel tu" ("voulais jouer" | "jouais"))? "?"</v></source></question><question><config><id>27</id><theme>0</theme></config><source><v>"c'est"? "qui" "qui as fait ça"? "?"</v><v>"Montre-moi qui" "c'est"? "?"</v></source></question><question><config><id>28</id><theme>1</theme></config><source><v>${avoir-besoin} ("aller aux toilettes?" | "faire pipi?")</v></source></question><question><config><id>29</id><theme>1</theme></config><source><v>"Est-ce que"? "tu t'es fait pipi dessus?"</v></source></question><answer><config><id>30</id><theme>1</theme></config><source><v>"Vas-y."</v><v>"Tu peux" "y"? "aller" "aux toilettes"? "."</v></source></answer><answer><config><id>31</id><theme>1</theme></config><source><v>"Attend la pause." | "Pas tout de suite."</v></source></answer><question><config><id>32</id><theme>1</theme></config><source><v>${ne-pas-pouvoir} ("attendre" | "patienter") ("un petit moment" | "5 minutes")? "?"</v><v>${pouvoir} "pas"? ("attendre" | "patienter") ("un petit moment" | "5 minutes")? "?"</v></source></question><answer><config><id>33</id><theme>1</theme></config><source><v>"Dans quelques minutes" | "Dans 5 minutes"</v><v>"Attend" ("5 minutes" | ("encore"? "un moment")) "."</v></source></answer><question><config><id>34</id><theme>1</theme></config><source><v>${avoir-besoin} "qu'un" ${camarades} ("t'accompagne?" | "viennes avec toi?")</v></source></question><answer><config><id>35</id><theme>1</theme></config><source><v>"c'est"? "pas grave."</v><v>("c'est"? "pas un problème.") | "Aucun problème."</v></source></answer><answer><config><id>36</id><theme>1</theme></config><source><v>"On va" "te"? "trouver" ("des" | "une") "nouveau"? "propre"? ("culotte" | "vêtements" | "habits" | "slip") "."</v></source></answer><answer><config><id>37</id><theme>1</theme></config><source><v>"Reste avec moi pendant la pause"</v></source></answer><question><config><id>38</id><theme>2</theme></config><source><v>${avoir-interrogatif} "comprit" ("ce qu'il fallait faire" | "la consigne") "?"</v></source></question><question><config><id>39</id><theme>2</theme></config><source><v>("Veux-tu" | "Tu-veux") ("colorier" | "faire un coloriage" | "faire un dessin") "?"</v></source></question><question><config><id>40</id><theme>2</theme></config><source><v>${avoir-besoin} "prendre" ("quelque chose" | "un truc") ("dans ton sac?" | "de ton sac"? | "de ta veste?")</v></source></question><question><config><id>41</id><theme>2</theme></config><source><v>"Un doudou"</v><v>${avoir-besoin} ("un" | "ton") "doudou?"</v></source></question><question><config><id>42</id><theme>2</theme></config><source><v>${avoir-besoin} "de l'aide?"</v></source></question><question><config><id>43</id><theme>2</theme></config><source><v>"Tu n'y arrives pas?"</v></source></question><question><config><id>44</id><theme>2</theme></config><source><v>${avoir-besoin} "que je vienne" "voir"? "avec toi"? "?"</v></source></question><question><config><id>45</id><theme>2</theme></config><source><v>Tu as oublié tes affaires de gym?</v></source></question><question><config><id>46</id><theme>2</theme></config><source><v>Tu as regardé dans ton sac?</v></source></question><answer><config><id>47</id><theme>2</theme></config><source><v>Je vais t'en prêter</v></source></answer><answer><config><id>48</id><theme>2</theme></config><source><v>C'est pas grave, tu feras la gym comme ça</v></source></answer><question><config><id>49</id><theme>2</theme></config><source><v>Tu as un problème avec ton dessin?</v></source></question><question><config><id>50</id><theme>4</theme></config><source><v>Tes parents te manquent?</v></source></question><answer><config><id>51</id><theme>4</theme></config><source><v>Ne t'inquiète pas.</v></source></answer><question><config><id>52</id><theme>4</theme></config><source><v>Veux-tu rester un moment tranquillement avec moi?</v></source></question><question><config><id>53</id><theme>4</theme></config><source><v>Veux-tu rester un moment avec moi avec un livre?</v></source></question><question><config><id>54</id><theme>4</theme></config><source><v>Veux-tu un doudou?</v></source></question><question><config><id>55</id><theme>4</theme></config><source><v>Veux-tu t'asseoir sur mes genoux?</v></source></question><answer><config><id>56</id><theme>4</theme></config><source><v>Tu les retrouveras tout bientôt.</v></source></answer></src>
+        <question>
+            <config>
+                <id>0</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>("C'est où que" | "Où") ("t'as" | "tu as") "mal?"</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>1</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>"Montre-moi."</v>
+            </source>
+        </answer>
+        <question>
+            <config>
+                <id>2</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${etre-neutre-interrogatif} ${camarades} "qui t'as fait ça"? "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>3</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "faim?"</v>
+                <v>${avoir-besoin} "manger" "quelque chose"? "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>4</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} ("envie" | "besoin") "de vomir?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>5</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${etre-neutre-interrogatif}? "quelqu'un" "qui"? "t'as" ("frappé?" | "tapé?")</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>6</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${etre-neutre-interrogatif}? "quand que t'as bu" "pour la dernière fois"? "?"</v>
+                <v>"ça fait longtemps que tu n'as pas bu?"</v>
+                <v>"Depuis combien de temps n'as-tu pas bu?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>7</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>("Es-tu" | "Tu es") "fatigué?"</v>
+                <v>${avoir-besoin} "de dormir?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>8</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} ("te coucher" | "t'allonger" | "faire une sieste") "un moment"? "?"
+                </v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>9</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} ("t'asseoir" "sur les coussins"? | "te mettre" "sur les coussins") "là-bas"? "un moment"? "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>10</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} ("t'asseoir" | "te mettre") "sur les coussins"? "là-bas"? "un moment"? "avec un
+                    doudou" "?"
+                </v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>11</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} ("quelque chose à boire" | "boire" | "boire quelque chose" | "un verre d'eau") "?"
+                </v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>12</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} "moucher?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>13</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "froid?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>14</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "trop"? "chaud?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>15</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} "enlever" ("ton pull" | "ta jacquette")</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>16</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>"viens,"? "on va" ("mettre" | "passer") "ta main sous l'eau?"</v>
+            </source>
+        </answer>
+        <question>
+            <config>
+                <id>17</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "mal au pied?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>18</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "mal à la jambe?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>19</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "mal au bras?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>20</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "mal à la tête?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>21</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "mal au ventre?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>22</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "mal à la gorge?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>23</id>
+                <theme>3</theme>
+            </config>
+            <source>
+                <v>"c'est"? "ici" "que tu as mal"? "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>24</id>
+                <theme>0</theme>
+            </config>
+            <source>
+                <v>${camarades} ("ne veut pas" | "n'as pas envie" | "refuse" | "n'est pas d'accord" | "n'as pas voulu")
+                    "jouer avec toi?"
+                </v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>25</id>
+                <theme>0</theme>
+            </config>
+            <source>
+                <v>${camarades} ("a prit" | "t'as piqué" | "t'as volé") ("un de tes" | "ton") "jouet?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>26</id>
+                <theme>0</theme>
+            </config>
+            <source>
+                <v>${camarades} ("a prit" | "t'as piqué" | "t'as volé") ("un des" | "le") "jouet?" ("avec lequel tu"
+                    ("voulais jouer" | "jouais"))? "?"
+                </v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>27</id>
+                <theme>0</theme>
+            </config>
+            <source>
+                <v>"c'est"? "qui" "qui as fait ça"? "?"</v>
+                <v>"Montre-moi qui" "c'est"? "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>28</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} ("aller aux toilettes?" | "faire pipi?")</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>29</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>"Est-ce que"? "tu t'es fait pipi dessus?"</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>30</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>"Vas-y."</v>
+                <v>"Tu peux" "y"? "aller" "aux toilettes"? "."</v>
+            </source>
+        </answer>
+        <answer>
+            <config>
+                <id>31</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>"Attend la pause." | "Pas tout de suite."</v>
+            </source>
+        </answer>
+        <question>
+            <config>
+                <id>32</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>${ne-pas-pouvoir} ("attendre" | "patienter") ("un petit moment" | "5 minutes")? "?"</v>
+                <v>${pouvoir} "pas"? ("attendre" | "patienter") ("un petit moment" | "5 minutes")? "?"</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>33</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>"Dans quelques minutes" | "Dans 5 minutes"</v>
+                <v>"Attend" ("5 minutes" | ("encore"? "un moment")) "."</v>
+            </source>
+        </answer>
+        <question>
+            <config>
+                <id>34</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} "qu'un" ${camarades} ("t'accompagne?" | "viennes avec toi?")</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>35</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>"c'est"? "pas grave."</v>
+                <v>("c'est"? "pas un problème.") | "Aucun problème."</v>
+            </source>
+        </answer>
+        <answer>
+            <config>
+                <id>36</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>"On va" "te"? "trouver" ("des" | "une") "nouveau"? "propre"? ("culotte" | "vêtements" | "habits" |
+                    "slip") "."
+                </v>
+            </source>
+        </answer>
+        <answer>
+            <config>
+                <id>37</id>
+                <theme>1</theme>
+            </config>
+            <source>
+                <v>"Reste avec moi pendant la pause"</v>
+            </source>
+        </answer>
+        <question>
+            <config>
+                <id>38</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>${avoir-interrogatif} "comprit" ("ce qu'il fallait faire" | "la consigne") "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>39</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>("Veux-tu" | "Tu-veux") ("colorier" | "faire un coloriage" | "faire un dessin") "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>40</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} "prendre" ("quelque chose" | "un truc") ("dans ton sac?" | "de ton sac"? | "de ta veste?")
+                </v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>41</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>"Un doudou"</v>
+                <v>${avoir-besoin} ("un" | "ton") "doudou?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>42</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} "de l'aide?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>43</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>"Tu n'y arrives pas?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>44</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>${avoir-besoin} "que je vienne" "voir"? "avec toi"? "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>45</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>"Tu as oublié tes affaires de gym?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>46</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>"Tu as regardé dans ton sac?"</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>47</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>"Je vais t'en prêter"</v>
+            </source>
+        </answer>
+        <answer>
+            <config>
+                <id>48</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>"C'est pas grave, tu feras la gym comme ça"</v>
+            </source>
+        </answer>
+        <question>
+            <config>
+         "       <id>49</id>
+                <theme>2</theme>
+            </config>
+            <source>
+                <v>"Tu as un problème avec ton dessin?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>50</id>
+                <theme>4</theme>
+            </config>
+            <source>
+                <v>"Tes parents te manquent?"</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>51</id>
+                <theme>4</theme>
+            </config>
+            <source>
+                <v>"Ne t'inquiète pas."</v>
+            </source>
+        </answer>
+        <question>
+            <config>
+                <id>52</id>
+                <theme>4</theme>
+            </config>
+            <source>
+                <v>"Veux-tu rester un moment tranquillement avec moi?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>53</id>
+                <theme>4</theme>
+            </config>
+            <source>
+                <v>"Veux-tu rester un moment avec moi avec un livre?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>54</id>
+                <theme>4</theme>
+            </config>
+            <source>
+                <v>"Veux-tu un doudou?""</v>
+            </source>
+        </question>
+        <question>
+            <config>
+                <id>55</id>
+                <theme>4</theme>
+            </config>
+            <source>
+                <v>"Veux-tu t'asseoir sur mes genoux?"</v>
+            </source>
+        </question>
+        <answer>
+            <config>
+                <id>56</id>
+                <theme>4</theme>
+            </config>
+            <source>
+                <v>"Tu les retrouveras tout bientôt"".</v>
+            </source>
+        </answer>
+    </src>
 </source>

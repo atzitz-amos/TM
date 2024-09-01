@@ -1,5 +1,8 @@
 import itertools
+import os.path
 import sqlite3
+
+from tensorflow.python.ops.gen_training_ops import SparseApplyProximalGradientDescent
 
 
 def predict(text):
@@ -14,7 +17,8 @@ def predict(text):
     }]
 
 
-def build_model(db_path):
+# noinspection PyUnresolvedReferences
+def build_model(db_path, hard=False):
     import keras
     import tensorflow as tf
     from keras.src.layers import GlobalAveragePooling1D
@@ -62,26 +66,36 @@ def build_model(db_path):
                 source_sentences)
 
     def make_and_train_model(vectorizer_layer, train, test, labels):
+        if os.path.exists("resources/data/model/training/model.keras"):
+            print("Found existing model, loading weights")
+            return keras.models.load_model("resources/data/model/training/model.keras")
+
         model = keras.Sequential([
             vectorizer_layer,
-            Embedding(len(vectorizer_layer.get_vocabulary()), 64, mask_zero=True),
+            Embedding(len(vectorizer_layer.get_vocabulary()), 512, mask_zero=True),
             GlobalAveragePooling1D(),
-            Dense(64, activation='relu'),
+            Dense(256, activation='sigmoid'),
+            Dense(128, activation='sigmoid'),
             Dense(len(labels))
         ])
 
-        tensorflow_callback = keras.callbacks.TensorBoard(log_dir="./logs")
-
-        model.compile(optimizer='adam',
-                      loss=tf.losses.BinaryCrossentropy(from_logits=True),
+        model.compile(optimizer="adam",
+                      loss=keras.losses.CategoricalCrossentropy(from_logits=True),
                       metrics=['accuracy'])
 
-        model.fit(train, validation_data=test, epochs=50, callbacks=[tensorflow_callback])
+        model.fit(train, validation_data=test, epochs=10)
         model.summary()
 
         print("evaluate:", model.evaluate(*test))
 
+        model.save("resources/data/model/training/model.keras")
         return model
+
+    if hard:
+        try:
+            os.remove("resources/data/model/training/model.keras")
+        except FileNotFoundError:
+            pass
 
     vlayer, tr, tst, lbls = prepare()
     return [make_and_train_model(vlayer, tr, tst, lbls), tr, tst, lbls]
@@ -92,5 +106,7 @@ if __name__ == "__main__":
 
     md, train_set, test_set, labels = build_model("resources/data/db.db")
     prediction = ["Tu veux que je te change?"]
-    md_predict = md.predict(tf.convert_to_tensor(prediction))
-    print(f"Prediction on: `{prediction[0]}`, for labels {labels} \n\t= ", md_predict, "\n\t= ", labels[tf.argmax(md_predict[0])])
+    pr = md.predict(tf.convert_to_tensor(prediction))
+    _, md_predict = tf.math.top_k(pr, k=3)
+    print(f"Prediction on: `{prediction[0]}`, for labels {labels} \n\t=", md_predict, "\n\t= ",
+          labels[md_predict[0, 0]], "\n\t=", labels[md_predict[0, 1]], "\n\t=", labels[md_predict[0, 2]])

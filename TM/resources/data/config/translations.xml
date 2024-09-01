@@ -1,61 +1,158 @@
 <source>
-    <entry source-id="0"/>
+    <entry source-id="0">
+        <target lang="DE" resource-audio="/audio/translations/DE/0.mp3" />
+    </entry>
     <entry source-id="1">
         <target lang="DE" resource-audio="/audio/translations/DE/1.mp3">Zeig mir!</target>
     </entry>
-    <entry source-id="2"/>
-    <entry source-id="3"/>
-    <entry source-id="4"/>
-    <entry source-id="5"/>
-    <entry source-id="6"/>
-    <entry source-id="7"/>
-    <entry source-id="8"/>
-    <entry source-id="9"/>
-    <entry source-id="10"/>
-    <entry source-id="11"/>
-    <entry source-id="12"/>
-    <entry source-id="13"/>
-    <entry source-id="14"/>
-    <entry source-id="15"/>
-    <entry source-id="16"/>
-    <entry source-id="17"/>
-    <entry source-id="18"/>
-    <entry source-id="19"/>
-    <entry source-id="20"/>
-    <entry source-id="21"/>
-    <entry source-id="22"/>
-    <entry source-id="23"/>
-    <entry source-id="24"/>
-    <entry source-id="25"/>
-    <entry source-id="26"/>
-    <entry source-id="27"/>
-    <entry source-id="28"/>
-    <entry source-id="29"/>
-    <entry source-id="30"/>
-    <entry source-id="31"/>
-    <entry source-id="32"/>
-    <entry source-id="33"/>
-    <entry source-id="34"/>
-    <entry source-id="35"/>
-    <entry source-id="36"/>
-    <entry source-id="37"/>
-    <entry source-id="38"/>
-    <entry source-id="39"/>
-    <entry source-id="40"/>
-    <entry source-id="41"/>
-    <entry source-id="42"/>
-    <entry source-id="43"/>
-    <entry source-id="44"/>
-    <entry source-id="45"/>
-    <entry source-id="46"/>
-    <entry source-id="47"/>
-    <entry source-id="48"/>
-    <entry source-id="49"/>
-    <entry source-id="50"/>
-    <entry source-id="51"/>
-    <entry source-id="52"/>
-    <entry source-id="53"/>
-    <entry source-id="54"/>
-    <entry source-id="55"/>
-    <entry source-id="56"/>
-</source>
+    <entry source-id="2">
+        <target lang="DE" resource-audio="/audio/translations/DE/2.mp3" />
+    </entry>
+    <entry source-id="3">
+        <target lang="DE" resource-audio="/audio/translations/DE/3.mp3" />
+    </entry>
+    <entry source-id="4">
+        <target lang="DE" resource-audio="/audio/translations/DE/4.mp3" />
+    </entry>
+    <entry source-id="5">
+        <target lang="DE" resource-audio="/audio/translations/DE/5.mp3" />
+    </entry>
+    <entry source-id="6">
+        <target lang="DE" resource-audio="/audio/translations/DE/6.mp3" />
+    </entry>
+    <entry source-id="7">
+        <target lang="DE" resource-audio="/audio/translations/DE/7.mp3" />
+    </entry>
+    <entry source-id="8">
+        <target lang="DE" resource-audio="/audio/translations/DE/8.mp3" />
+    </entry>
+    <entry source-id="9">
+        <target lang="DE" resource-audio="/audio/translations/DE/9.mp3" />
+    </entry>
+    <entry source-id="10">
+        <target lang="DE" resource-audio="/audio/translations/DE/10.mp3" />
+    </entry>
+    <entry source-id="11">
+        <target lang="DE" resource-audio="/audio/translations/DE/11.mp3" />
+    </entry>
+    <entry source-id="12">
+        <target lang="DE" resource-audio="/audio/translations/DE/12.mp3" />
+    </entry>
+    <entry source-id="13">
+        <target lang="DE" resource-audio="/audio/translations/DE/13.mp3" />
+    </entry>
+    <entry source-id="14">
+        <target lang="DE" resource-audio="/audio/translations/DE/14.mp3" />
+    </entry>
+    <entry source-id="15">
+        <target lang="DE" resource-audio="/audio/translations/DE/15.mp3" />
+    </entry>
+    <entry source-id="16">
+        <target lang="DE" resource-audio="/audio/translations/DE/16.mp3" />
+    </entry>
+    <entry source-id="17">
+        <target lang="DE" resource-audio="/audio/translations/DE/17.mp3" />
+    </entry>
+    <entry source-id="18">
+        <target lang="DE" resource-audio="/audio/translations/DE/18.mp3" />
+    </entry>
+    <entry source-id="19">
+        <target lang="DE" resource-audio="/audio/translations/DE/19.mp3" />
+    </entry>
+    <entry source-id="20">
+        <target lang="DE" resource-audio="/audio/translations/DE/20.mp3" />
+    </entry>
+    <entry source-id="21">
+        <target lang="DE" resource-audio="/audio/translations/DE/21.mp3" />
+    </entry>
+    <entry source-id="22">
+        <target lang="DE" resource-audio="/audio/translations/DE/22.mp3" />
+    </entry>
+    <entry source-id="23">
+        <target lang="DE" resource-audio="/audio/translations/DE/23.mp3" />
+    </entry>
+    <entry source-id="24">
+        <target lang="DE" resource-audio="/audio/translations/DE/24.mp3" />
+    </entry>
+    <entry source-id="25">
+        <target lang="DE" resource-audio="/audio/translations/DE/25.mp3" />
+    </entry>
+    <entry source-id="26">
+        <target lang="DE" resource-audio="/audio/translations/DE/26.mp3" />
+    </entry>
+    <entry source-id="27">
+        <target lang="DE" resource-audio="/audio/translations/DE/27.mp3" />
+    </entry>
+    <entry source-id="28">
+        <target lang="DE" resource-audio="/audio/translations/DE/28.mp3" />
+    </entry>
+    <entry source-id="29">
+        <target lang="DE" resource-audio="/audio/translations/DE/29.mp3" />
+    </entry>
+    <entry source-id="30">
+        <target lang="DE" resource-audio="/audio/translations/DE/30.mp3" />
+    </entry>
+    <entry source-id="31">
+        <target lang="DE" resource-audio="/audio/translations/DE/31.mp3" />
+    </entry>
+    <entry source-id="32">
+        <target lang="DE" resource-audio="/audio/translations/DE/32.mp3" />
+    </entry>
+    <entry source-id="33">
+        <target lang="DE" resource-audio="/audio/translations/DE/33.mp3" />
+    </entry>
+    <entry source-id="34">
+        <target lang="DE" resource-audio="/audio/translations/DE/34.mp3" />
+    </entry>
+    <entry source-id="35">
+        <target lang="DE" resource-audio="/audio/translations/DE/35.mp3" />
+    </entry>
+    <entry source-id="36">
+        <target lang="DE" resource-audio="/audio/translations/DE/36.mp3" />
+    </entry>
+    <entry source-id="37">
+        <target lang="DE" resource-audio="/audio/translations/DE/37.mp3" />
+    </entry>
+    <entry source-id="38">
+        <target lang="DE" resource-audio="/audio/translations/DE/38.mp3" />
+    </entry>
+    <entry source-id="39">
+        <target lang="DE" resource-audio="/audio/translations/DE/39.mp3" />
+    </entry>
+    <entry source-id="40">
+        <target lang="DE" resource-audio="/audio/translations/DE/40.mp3" />
+    </entry>
+    <entry source-id="41">
+        <target lang="DE" resource-audio="/audio/translations/DE/41.mp3" />
+    </entry>
+    <entry source-id="42">
+        <target lang="DE" resource-audio="/audio/translations/DE/42.mp3" />
+    </entry>
+    <entry source-id="43">
+        <target lang="DE" resource-audio="/audio/translations/DE/43.mp3" />
+    </entry>
+    <entry source-id="44">
+        <target lang="DE" resource-audio="/audio/translations/DE/44.mp3" />
+    </entry>
+    <entry source-id="45">
+        <target lang="DE" resource-audio="/audio/translations/DE/45.mp3" />
+    </entry>
+    <entry source-id="46">
+        <target lang="DE" resource-audio="/audio/translations/DE/46.mp3" />
+    </entry>
+    <entry source-id="47">
+        <target lang="DE" resource-audio="/audio/translations/DE/47.mp3" />
+    </entry>
+    <entry source-id="48">
+        <target lang="DE" resource-audio="/audio/translations/DE/48.mp3" />
+    </entry>
+    <entry source-id="49">
+        <target lang="DE" resource-audio="/audio/translations/DE/49.mp3" />
+    </entry>
+    <entry source-id="50">
+        <target lang="DE" resource-audio="/audio/translations/DE/50.mp3" />
+    </entry>
+    <entry source-id="51">
+        <target lang="DE" resource-audio="/audio/translations/DE/51.mp3" />
+    </entry>
+<entry source-id="52"><target lang="DE" resource-audio="/audio/translations/DE/52.mp3" /></entry><entry source-id="53"><target lang="DE" resource-audio="/audio/translations/DE/53.mp3" /></entry><entry source-id="54"><target lang="DE" resource-audio="/audio/translations/DE/54.mp3" /></entry><entry source-id="55"><target lang="DE" resource-audio="/audio/translations/DE/55.mp3" /></entry><entry source-id="56"><target lang="DE" resource-audio="/audio/translations/DE/56.mp3" /></entry></source>

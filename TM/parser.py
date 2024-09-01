@@ -231,7 +231,7 @@ class Parser:
                 res.append(val.format(**dict(zip(z.keys(), x))))
             return res
 
-        return [remove_duplicate_spaces(x) for x in expand_single(*string)]
+        return list({remove_duplicate_spaces(x) for x in expand_single(*string)})
 
     def build_source(self, s, var):
         return self.expand(*self.transform_to_string(self.collapse_(s, var)))

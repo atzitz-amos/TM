@@ -28,7 +28,7 @@ def setup_translations(path):
     for element in root.findall("entry"):
         for value in element.findall("target"):
             results.append(
-                (int(element.attrib["source-id"]), value.attrib["lang"], value.text.strip(), value.attrib["resource-audio"]))
+                (int(element.attrib["source-id"]), value.attrib["lang"], value.text.strip() if value.text else "", value.attrib["resource-audio"]))
     conn.executemany(
         "INSERT OR IGNORE INTO translations(source_id, target_id, literal, resource_audio_path) VALUES (?, ?, ?, ?)",
         results)

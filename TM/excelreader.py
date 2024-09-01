@@ -6,7 +6,7 @@ import openpyxl
 
 
 def read_excel(file_path):
-    wb = openpyxl.load_workbook(file_path)
+    wb = openpyxl.load_workbook(open(file_path, "rb"))
     sheet = wb.active
 
     """ Source """
@@ -140,7 +140,7 @@ def write_xml(src_path, data, overwrite_data=True, overwrite_translations=True):
 if __name__ == '__main__':
     write_xml(
         "./resources/data/config/",
-        read_excel("resources/data/config/data.xlsx"),
+        read_excel("resources/data/data.xlsx"),
         overwrite_data=True,
         overwrite_translations=True
     )
