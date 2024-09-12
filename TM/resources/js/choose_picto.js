@@ -37,6 +37,7 @@ window.addEventListener("load", () => {
     setupTaskbar();
 
     document.querySelector(".header").textContent = getQueryStringArgument("literal");
+    document.querySelector(".header").dataset.audio_url = getQueryStringArgument("audio-url");
 
     document.querySelector(".footer-left-button").addEventListener("click", () => {
         window.location.href = "/translation.html?lang=" + getQueryStringArgument("target") + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme") + "#questions";

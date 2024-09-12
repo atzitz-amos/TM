@@ -2,23 +2,41 @@
   "config.supportedLanguages": [
     {
       "id": 0,
-      "name": "Allemand",
-      "code": "DE",
-      "resources.flag": "/image/flag_de.png"
+      "name": "DE",
+      "code": "Allemand",
+      "resources.flag": "/images/flags/DE.png"
     }
   ],
   "config.themes": [
     {
       "id": 0,
-      "name": "Freunde",
-      "resources.audio": "/audio/theme/0.mp4",
-      "resources.image": "fa://fa-user-friends"
+      "name": "Toilettes",
+      "resources.audio": "/audio/themes/Toilettes.mp3",
+      "resources.image": "/images/themes/Toilettes.png"
     },
     {
       "id": 1,
-      "name": "Toilette",
-      "resources.audio": "/audio/theme/1.mp3",
-      "resources.image": "fa://fa-toilet-paper"
+      "name": "Conflit",
+      "resources.audio": "/audio/themes/Conflit.mp3",
+      "resources.image": "/images/themes/Conflit.png"
+    },
+    {
+      "id": 2,
+      "name": "Sant\u00e9",
+      "resources.audio": "/audio/themes/Sant\u00e9.mp3",
+      "resources.image": "/images/themes/Sant\u00e9.png"
+    },
+    {
+      "id": 3,
+      "name": "Papa / Maman",
+      "resources.audio": "/audio/themes/Papa / Maman.mp3",
+      "resources.image": "/images/themes/Papa / Maman.png"
+    },
+    {
+      "id": 4,
+      "name": "Compr\u00e9hension",
+      "resources.audio": "/audio/themes/Compr\u00e9hension.mp3",
+      "resources.image": "/images/themes/Compr\u00e9hension.png"
     }
   ]
 }

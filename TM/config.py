@@ -1,6 +1,9 @@
 import json
+import os
 import sqlite3
 from xml.etree import ElementTree as ET
+
+import gtts
 
 from TM.parser import Parser
 
@@ -8,11 +11,14 @@ CONFIG_JSON = json.load(open("resources/data/config/config.json", "r"))
 TRANSLATIONS_FILEPATH = "resources/data/config/translations.xml"
 
 
-def setup_themes(conn):
+def setup_themes(path, conn):
     themes = CONFIG_JSON["config.themes"]
     conn.executemany(
         "INSERT OR IGNORE INTO themes(id, name, resource_audio_path, resource_image_path) VALUES (?, ?, ?, ?)",
         [(x["id"], x["name"], x["resources.audio"], x["resources.image"]) for x in themes])
+
+    for theme in themes:
+        gtts.gTTS(text=theme["name"], lang="de").save(f"{path}/theme/{theme["id"]}.mp3")
 
 
 def setup_languages(conn):
@@ -28,15 +34,27 @@ def setup_translations(path):
     for element in root.findall("entry"):
         for value in element.findall("target"):
             results.append(
-                (int(element.attrib["source-id"]), value.attrib["lang"], value.text.strip() if value.text else "", value.attrib["resource-audio"]))
+                (int(element.attrib["source-id"]), value.attrib["lang"], value.text.strip() if value.text else "",
+                 value.attrib["resource-audio"]))
     conn.executemany(
         "INSERT OR IGNORE INTO translations(source_id, target_id, literal, resource_audio_path) VALUES (?, ?, ?, ?)",
         results)
     conn.commit()
     conn.close()
+    return results
 
 
-def setup(path, hard=False):
+def setup_audio(path, translations):
+    for lang in set(x[1] for x in translations):
+        try:
+            os.mkdir(f"{path}/translations/{lang}")
+        except FileExistsError:
+            pass
+    for tr in translations:
+        gtts.gTTS(text=tr[2], lang=tr[1].lower()).save(f"{path}/translations/{tr[1]}/{tr[0]}.mp3")
+
+
+def setup(path, hard=False, rebuild_audio=False):
     conn = sqlite3.connect(path)
     conn.execute("PRAGMA foreign_keys = 1")
 
@@ -72,6 +90,7 @@ def setup(path, hard=False):
     conn.execute("""CREATE TABLE IF NOT EXISTS sentences_variations(
         source_id INTEGER,
         literal TEXT NOT NULL,
+        normalized TEXT,
         FOREIGN KEY(source_id) REFERENCES source_sentences(id)
             )""")
     conn.execute("""CREATE TABLE IF NOT EXISTS source_sentences(
@@ -90,7 +109,7 @@ def setup(path, hard=False):
         FOREIGN KEY(source_id) REFERENCES source_sentences(id)
     )""")
 
-    setup_themes(conn)
+    setup_themes("./resources/audio", conn)
     setup_languages(conn)
 
     conn.commit()
@@ -99,4 +118,7 @@ def setup(path, hard=False):
     parser = Parser("resources/data/config/data.xml")
     parser.to_db(db_path=path)
 
-    setup_translations(path)
+    translations = setup_translations(path)
+
+    if rebuild_audio:
+        setup_audio("./resources/audio", translations)

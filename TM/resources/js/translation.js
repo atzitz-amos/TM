@@ -92,7 +92,7 @@ function recoverAudio(cks) {
                     http2.onreadystatechange = () => {
                         if (http2.readyState === 4 && http2.status === 200) {
                             let json = JSON.parse(http2.responseText);
-                            window.location.href = "/choose_picto.html?target=" + getQueryStringArgument("lang") + "&theme=" + getQueryStringArgument("theme") + "&literal=" + json.literal + "&audio=" + json.resource_audio_path + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
+                            window.location.href = "/choose_picto.html?target=" + getQueryStringArgument("lang") + "&theme=" + getQueryStringArgument("theme") + "&literal=" + json.literal + "&audio-url=" + json.resource_audio_path + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
                         }
                     }
                     http2.send();

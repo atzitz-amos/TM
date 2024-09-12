@@ -10,20 +10,25 @@ from TM import model, config
 
 app = flask.Flask(__name__)
 
-path = r'./resources'
+path = r'.\resources'
 allowed_files = []
 
 for root, _, files in os.walk(path):
+    root = root.split(os.path.sep)[3:]
     for file in files:
-        allowed_files.append(file)
+        allowed_files.append(os.path.join(*root, file).replace("\\", "/"))
 
 print(allowed_files)
 
 DB_PATH = "./resources/data/db.db"
 
-should_setup = True
+should_setup = False
+should_rebuild_audio = False
+should_retrain = False
 if should_setup:  # Set to false after first run to remove the necessity of another configuration
-    config.setup(DB_PATH, hard=True)
+    config.setup(DB_PATH, hard=True, rebuild_audio=should_rebuild_audio)
+
+AI_MODEL = model.build_model(DB_PATH, hard=should_retrain)
 
 TEMP_FILE_COUNT = 0
 
@@ -37,7 +42,7 @@ def query_db(query, args=(), one=False):
     return (r[0] if r else None) if one else r
 
 
-@app.route("/resources/<scope>/<name>")
+@app.route("/resources/<scope>/<path:name>")
 def res(scope, name):
     try:
         if scope not in ["css", "js", "image", "audio"] or name not in allowed_files:
@@ -52,6 +57,8 @@ def res(scope, name):
         content_type = "text/" + scope
         if scope == "js":
             content_type = "text/javascript"
+        if scope == "audio":
+            content_type = "audio/mpeg"
         r = flask.Response(data, 200)
         r.headers["Content-Type"] = "; ".join([content_type, "charset=utf-8"])
         return r
@@ -180,7 +187,7 @@ def recognize():
     with sr.AudioFile("./resources/temp/audio.wav") as source:
         data = r.record(source)
     try:
-        result = model.predict(r.recognize_google(data, language="fr-FR"))
+        result = model.predict(DB_PATH, AI_MODEL, r.recognize_google(data, language="fr-FR"))
     except UnknownValueError:
         return flask.abort(400)
 

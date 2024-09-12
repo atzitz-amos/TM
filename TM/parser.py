@@ -17,12 +17,12 @@ def parse_xml(xml_file):
         variables[var.find("name").text] = [x.text for x in var.find("source").findall("v")]
     for question in tree_src.findall('question'):
         config = question.find("config")
-        questions[(config.find("id").text, config.find("theme").text, 0)] = [x.text for x in
-                                                                             question.find("source").findall("v")]
+        questions[(config.find("id").text, config.find("theme").text, 0, config.find("literal").text)] \
+            = [x.text for x in question.find("source").findall("v")]
     for answer in tree_src.findall('answer'):
         config = answer.find("config")
-        questions[(config.find("id").text, config.find("theme").text, 1)] = [x.text for x in
-                                                                             answer.find("source").findall("v")]
+        questions[(config.find("id").text, config.find("theme").text, 1, config.find("literal").text)] \
+            = [x.text for x in answer.find("source").findall("v")]
 
     return variables, questions
 
@@ -123,11 +123,22 @@ def parse_source(text):
 Literal = namedtuple("Literal", ["value"])
 Variable = namedtuple("Variable", ["choices"])
 
+PUNCT = "?-_.,!;:' "
 
-def remove_duplicate_spaces(x):
+
+def _normalize(x):
+    for c in PUNCT:
+        x = x.replace(c, "")
+    x = x.replace("è", "e").replace("é", "e").replace("ê", "e").replace("ë", "e")
+    x = x.replace("ä", "a").replace("à", "a").replace("ù", "u")
+
+    return x.lower()
+
+
+def remove_duplicate_spaces(x: str):
     while "  " in x:
         x = x.replace("  ", " ")
-    return x
+    return x.strip()
 
 
 class Parser:
@@ -183,7 +194,7 @@ class Parser:
 
         def collapse_literal(lit, alt):
             if alt == "?":
-                return Variable([lit, Literal(value="")])
+                return Variable([Literal(lit), Literal(value="")])
             return Literal(lit)
 
         if not len(src_data):
@@ -208,7 +219,8 @@ class Parser:
                 if isinstance(x, Literal):
                     r += x.value
                 elif isinstance(x, Variable):
-                    variables[f"var{varcounter}"] = [to_string(y) for y in x.choices]
+                    variables[f"var{varcounter}"] = [to_string(y) if isinstance(y, list) else to_string([y]) for y in
+                                                     x.choices]
                     r += "{var" + str(varcounter) + "}"
                     used_vars[f"var{varcounter}"] = variables[f"var{varcounter}"]
                     varcounter += 1
@@ -270,9 +282,9 @@ class Parser:
         for key, values in result.items():
             try:
                 conn.execute("INSERT INTO source_sentences(id, theme_id, s_type, literal) VALUES (?, ?, ?, ?)",
-                             (int(key[0]), int(key[1]), int(key[2]), values[0]))
-                conn.executemany("INSERT INTO sentences_variations(source_id, literal) VALUES (?, ?)",
-                                 [(int(key[0]), v) for v in values])
+                             (int(key[0]), int(key[1]), int(key[2]), key[3]))
+                conn.executemany("INSERT INTO sentences_variations(source_id, literal, normalized) VALUES (?, ?, ?)",
+                                 [(int(key[0]), v, _normalize(v)) for v in values])
             except sqlite3.IntegrityError:
                 pass
         conn.commit()
