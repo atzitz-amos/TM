@@ -22,7 +22,7 @@ print(allowed_files)
 
 DB_PATH = "./resources/data/db.db"
 
-should_setup = False
+should_setup = True
 should_rebuild_audio = False
 should_retrain = False
 if should_setup:  # Set to false after first run to remove the necessity of another configuration
@@ -208,5 +208,3 @@ def translate():
     return query_db("SELECT * FROM translations WHERE source_id=? AND target_id=?", (id_, target),
                     one=True) or flask.abort(400)
 
-
-app.run(host="0.0.0.0")

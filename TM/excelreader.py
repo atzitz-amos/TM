@@ -323,8 +323,8 @@ def write_xml(src_path, data, overwrite_data=True, overwrite_translations=True):
         config["config.themes"].append({
             "id": themes.index(theme),
             "name": theme,
-            "resources.audio": f"/audio/themes/{theme}.mp3",
-            "resources.image": f"/images/themes/{theme}.png"
+            "resources.audio": f"/audio/theme/{themes.index(theme)}.mp3",
+            "resources.image": f"/image/theme/{themes.index(theme)}.png"
         })
 
     for lang in languages:
@@ -332,7 +332,7 @@ def write_xml(src_path, data, overwrite_data=True, overwrite_translations=True):
             "id": languages.index(lang),
             "name": LANG_CODES[lang.lower()],
             "code": lang,
-            "resources.flag": f"/images/flag_{lang.lower()}.png"
+            "resources.flag": f"/image/flag_{lang.lower()}.png"
         })
 
     json.dump(config, open(os.path.join(src_path, "config.json"), "w"))

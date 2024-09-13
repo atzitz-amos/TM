@@ -15,6 +15,7 @@ const __animationsMap = animationsMap({
 });
 
 const DEFAULT_TRANSLATIONS_BOX_CONTENT = "Appuyez sur le microphone pour d&eacute;marrer l&apos;enregistrement...";
+const ERROR_TRANSLATIONS_BOX_CONTENT = "Je n'ai pas compris... Pouvez-vous répéter?";
 const WAITING_TRANSLATIONS_BOX_CONTENT = "En attente...";
 
 /**
@@ -25,6 +26,17 @@ function getQueryStringArgument(name) {
     return params.get(name);
 }
 
+function translate(id) {
+    let http2 = new XMLHttpRequest();
+    http2.open("POST", "/api/translate?id=" + id + "&target=" + getQueryStringArgument("lang"));
+    http2.onreadystatechange = () => {
+        if (http2.readyState === 4 && http2.status === 200) {
+            let json = JSON.parse(http2.responseText);
+            window.location.href = "/choose_picto.html?target=" + getQueryStringArgument("lang") + "&theme=" + getQueryStringArgument("theme") + "&literal=" + json.literal + "&audio-url=" + json.resource_audio_path + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
+        }
+    }
+    http2.send();
+}
 
 /**
  *  RECORDING */
@@ -86,30 +98,20 @@ function recoverAudio(cks) {
                 x.textContent = el["source.literal"];
                 div.appendChild(x);
 
-                x.addEventListener("click", () => {
-                    let http2 = new XMLHttpRequest();
-                    http2.open("POST", "/api/translate?id=" + el.id + "&target=" + getQueryStringArgument("lang"));
-                    http2.onreadystatechange = () => {
-                        if (http2.readyState === 4 && http2.status === 200) {
-                            let json = JSON.parse(http2.responseText);
-                            window.location.href = "/choose_picto.html?target=" + getQueryStringArgument("lang") + "&theme=" + getQueryStringArgument("theme") + "&literal=" + json.literal + "&audio-url=" + json.resource_audio_path + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
-                        }
-                    }
-                    http2.send();
-                });
+                x.addEventListener("click", () => translate(el["source.id"]));
             });
 
             if (rotatingAnims) {
                 cancelRotatingAnims();
             }
         } else if (http.readyState === 4) {
-            document.querySelector(".section-header").innerHTML = DEFAULT_TRANSLATIONS_BOX_CONTENT;
+            document.querySelector(".section-header").innerHTML = ERROR_TRANSLATIONS_BOX_CONTENT;
             if (rotatingAnims) {
                 cancelRotatingAnims();
             }
         }
-    }
-    ;
+    };
+
     http.send(fd);
 }
 
@@ -304,6 +306,7 @@ function buildSentencesList(sentences) {
         div.innerText = s.literal;
         if (s.s_type === 0) questions.appendChild(div); else answers.appendChild(div);
 
+        div.addEventListener("click", () => translate(s.id));
     });
 }
 
