@@ -98,7 +98,7 @@ function recoverAudio(cks) {
                 x.textContent = el["source.literal"];
                 div.appendChild(x);
 
-                x.addEventListener("click", () => translate(el["source.id"]));
+                x.addEventListener("click", () => translate(el["id"]));
             });
 
             if (rotatingAnims) {

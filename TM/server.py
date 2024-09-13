@@ -208,3 +208,5 @@ def translate():
     return query_db("SELECT * FROM translations WHERE source_id=? AND target_id=?", (id_, target),
                     one=True) or flask.abort(400)
 
+
+app.run()
