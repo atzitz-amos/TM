@@ -227,6 +227,7 @@ function animateLanguageToStudents(duration, callback) {
         animExit.cancel();
         el2.style.left = "150%";
         callback();
+        triggerTutorialHook("entered_students");
     });
 }
 
@@ -316,6 +317,7 @@ function animateAddStudentsToStudents(duration, callback) {
         if (el.getAnimations().length === 0) {  // Skip first transition
             callback();
         }
+        triggerTutorialHook("entered_students");
     };
 }
 
