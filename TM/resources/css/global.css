@@ -37,6 +37,7 @@ body {
     height: 200px;
 
     align-items: flex-end;
+    position: relative;
 }
 
 .content, .content-page {
@@ -328,4 +329,27 @@ body {
 
 .content-page[active] {
     left: 0;
+}
+
+
+.taskbar-options {
+    position: absolute;
+    right: 50px;
+
+    font-size: 5em;
+    color: #454E3F;
+}
+
+.taskbar-options-menu {
+    position: absolute;
+    z-index: 2000;
+    font-size: 3em;
+    flex-direction: column;
+    background: #90968f;
+    box-shadow: 10px 10px 13px #7e8880;
+}
+
+.taskbar-option {
+    padding: 20px;
+    outline: 1px solid white;
 }

@@ -1,6 +1,3 @@
-
-let hashchanges_count = 0;
-
 function animFooterRight(duration, callback = null) {
     const mainBBox = document.querySelector('.footer-main-border').getBoundingClientRect();
     const svgBBox = document.querySelector('.footer-svg').getBoundingClientRect();

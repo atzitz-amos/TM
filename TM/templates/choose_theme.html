@@ -6,13 +6,16 @@
     <title>Index</title>
 
     <link href="../resources/css/global.css" rel="stylesheet">
+    <link href="../resources/css/tutorial.css" rel="stylesheet">
     <link href="../resources/css/choose_theme.css" rel="stylesheet">
 
+    <script src="../resources/js/tutorials.js"></script>
     <script src="../resources/js/choose_theme.js"></script>
     <script src="../resources/js/speakable.js"></script>
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/56ede3712c.js"></script>
 </head>
 <body>
+<div class="tutorial"></div>
 <div class="taskbar">
     <div class="taskbar-icon">
         <a href="javascript:window.history.back()"><i class="fas fa-arrow-left"></i></a>
@@ -24,7 +27,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="header speakable">Was willst du mir sagen?</div>
+    <div class="header speakable" data-audio_url="/audio/main_sentence.mp3">Was willst du mir sagen?</div>
     <div class="theme-list">
         <div class="confirm-button">S&eacute;lectionner</div>
     </div>

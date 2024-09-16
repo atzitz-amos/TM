@@ -1,0 +1,197 @@
+
+.tutorial, .tutorial-dialog {
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-between;
+
+    left: 10%;
+    top: 10%;
+    min-width: 600px;
+    min-height: 150px;
+    max-width: 800px;
+
+    word-break: keep-all;
+
+    background: #181334;
+    color: #91B0A8;
+    border-radius: 15px;
+    font-size: 4em;
+    padding: 10px 20px 20px 10px;
+
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+
+    transition: opacity 0.5s;
+
+    --tutorial-arrow-left: 50%;
+}
+
+.tutorial-dialog {
+    opacity: 1;
+    width: 80vw;
+    height: 50vh;
+
+    justify-content: flex-start;
+
+    box-shadow: 13px 17px 20px 8px #090634;
+}
+
+.tutorial.arrow-bottom::after, .tutorial.arrow-top::after {
+    content: '';
+
+    position: absolute;
+    top: 100%;
+    left: var(--tutorial-arrow-left);
+
+    width: 0;
+    height: 0;
+    margin-left: -20px;
+
+    border: 20px solid transparent;
+    border-top-color: #181334;
+}
+
+.tutorial.arrow-top::after {
+    top: -40px;
+    border-top-color: transparent;
+    border-bottom-color: #181334;
+}
+
+.tutorial.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.tutorial-content {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.tutorial-content::first-letter {
+    margin-left: 1.6em;
+}
+
+.tutorial-buttons {
+    align-items: flex-end;
+    justify-content: center;
+
+    width: 100%;
+    margin-top: 15px;
+}
+
+.tutorial button {
+    background: none;
+    color: white;
+    font-size: 0.7em;
+    border: 0;
+}
+
+.tutorial-next i {
+    font-size: 90%;
+}
+
+.tutorial-close {
+    display: inline-block;
+    position: absolute;
+    width: min-content;
+    height: min-content;
+
+    padding: 0.3em;
+
+    font-size: 0.7em;
+    font-family: auto;
+}
+
+.tutorial-dialog {
+    text-align: center;
+    padding: 50px;
+
+    pointer-events: all;
+}
+
+.tutorial-dialog h1 {
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.tutorial-dialog p {
+    font-size: 0.8em;
+    margin: 50px 0 0;
+    text-align: justify;
+    font-style: italic;
+
+    hyphens: auto;
+}
+
+.tutorial-dialog p::first-letter {
+    margin-left: 1.6em;
+}
+
+.tutorial-dialog .tutorial-buttons {
+    margin-top: 10%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.tutorial-dialog button {
+    font-size: 70%;
+    width: 90%;
+    border: 0;
+    background: #84d0ff;
+}
+
+.tutorial.shake {
+    animation: shake-tutorial 0.5s;
+}
+
+.tutorial-pane {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    pointer-events: all;
+    opacity: 0.9;
+    background: #1f2120;
+}
+
+.tutorial-current-step {
+    font-size: 70%;
+    position: absolute;
+    right: 30px;
+    color: #A3ABB0;
+    font-family: monospace;
+
+}
+
+
+.tutorial-content i {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+@keyframes shake-tutorial {
+    0% {
+        transform: rotate(-1.5deg);
+    }
+    20% {
+        transform: rotate(1.5deg);
+    }
+    40% {
+        transform: rotate(-1.5deg);
+    }
+    60% {
+        transform: rotate(1.5deg);
+    }
+    80% {
+        transform: rotate(-1.5deg);
+    }
+    100% {
+        transform: rotate(1.5deg);
+    }
+}

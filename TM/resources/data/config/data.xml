@@ -54,8 +54,8 @@
                 <v>"vous devez"</v>
                 <v>"est-ce que tu dois"</v>
                 <v>"est-ce que vous devez"</v>
-                <b>"dois-tu"</b>
-                <b>"devez-vous"</b>
+                <v>"dois-tu"</v>
+                <v>"devez-vous"</v>
             </source>
         </variable>
         <variable>
@@ -85,34 +85,34 @@
                 <v>"est-ce que tu n'arrives pas"</v>
             </source>
         </variable>
+        <variable>
+            <name>pas-inquietude</name>
+            <source>
+                <v>"ne t'inquiète pas"</v>
+                <v>"ne t'en fais pas"</v>
+                <v>"tout va bien"</v>
+                <v>"ça va aller"</v>
+            </source>
+        </variable>
     </decl>
 
 
     <src>
         <question>
             <config>
-                <id>23</id>
-                <theme>3</theme>
-                <literal>Ici?</literal>
-            </config>
-            <source>
-                <v>"c'est"? "ici" "que tu as mal"? "?"</v>
-            </source>
-        </question>
-        <question>
-            <config>
                 <id>0</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Où as-tu mal?</literal>
             </config>
             <source>
-                <v>("C'est où que" | "Où") ("as-tu" | "tu as") "mal?"</v>
+                <v>("C'est où que tu as" | "Où as-tu") "mal?"</v>
+                <v>("C'est où que tu t'es" | "Où t'es-tu") "blessé?"</v>
             </source>
         </question>
         <answer>
             <config>
                 <id>1</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Montre-moi.</literal>
             </config>
             <source>
@@ -122,7 +122,7 @@
         <question>
             <config>
                 <id>2</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>C'est un copain qui t'as fait ça?</literal>
             </config>
             <source>
@@ -132,7 +132,7 @@
         <question>
             <config>
                 <id>3</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>As-tu faim?</literal>
             </config>
             <source>
@@ -143,7 +143,7 @@
         <question>
             <config>
                 <id>4</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>As-tu besoin de vomir?</literal>
             </config>
             <source>
@@ -153,7 +153,7 @@
         <question>
             <config>
                 <id>5</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Quelqu'un t'as tapé?</literal>
             </config>
             <source>
@@ -163,7 +163,7 @@
         <question>
             <config>
                 <id>6</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Quand est-ce que tu as bu pour la dernière fois?</literal>
             </config>
             <source>
@@ -175,7 +175,7 @@
         <question>
             <config>
                 <id>7</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Es-tu fatigué?</literal>
             </config>
             <source>
@@ -186,8 +186,8 @@
         <question>
             <config>
                 <id>8</id>
-                <theme>3</theme>
-                <literal>Veux tu te coucher?</literal>
+                <theme>1</theme>
+                <literal>Veux-tu te coucher?</literal>
             </config>
             <source>
                 <v>${avoir-besoin} ("te coucher" | "t'allonger" | "faire une sieste") "un moment"? "?"</v>
@@ -196,7 +196,7 @@
         <question>
             <config>
                 <id>9</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Veux-tu t'asseoir un moment?</literal>
             </config>
             <source>
@@ -206,7 +206,7 @@
         <question>
             <config>
                 <id>10</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Veux-tu t'asseoir un moment avec un doudou?</literal>
             </config>
             <source>
@@ -216,8 +216,8 @@
         <question>
             <config>
                 <id>11</id>
-                <theme>3</theme>
-                <literal>Veux tu un verre d'eau?</literal>
+                <theme>1</theme>
+                <literal>Veux-tu un verre d'eau?</literal>
             </config>
             <source>
                 <v>${avoir-besoin} ("quelque chose à boire" | "boire" | "boire quelque chose" | "un verre d'eau") "?"</v>
@@ -226,7 +226,7 @@
         <question>
             <config>
                 <id>12</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>As-tu besoin de te moucher?</literal>
             </config>
             <source>
@@ -236,7 +236,7 @@
         <question>
             <config>
                 <id>13</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>As-tu froid?</literal>
             </config>
             <source>
@@ -246,7 +246,7 @@
         <question>
             <config>
                 <id>14</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>As-tu chaud?</literal>
             </config>
             <source>
@@ -256,7 +256,7 @@
         <question>
             <config>
                 <id>15</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Veux-tu enlever ton pull?</literal>
             </config>
             <source>
@@ -266,7 +266,7 @@
         <answer>
             <config>
                 <id>16</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>On va mettre ta main sous l'eau.</literal>
             </config>
             <source>
@@ -276,7 +276,7 @@
         <question>
             <config>
                 <id>17</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Tu as mal au pied?</literal>
             </config>
             <source>
@@ -286,7 +286,7 @@
         <question>
             <config>
                 <id>18</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Tu as mal à la jambe?</literal>
             </config>
             <source>
@@ -296,7 +296,7 @@
         <question>
             <config>
                 <id>19</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Tu as mal au bras?</literal>
             </config>
             <source>
@@ -306,7 +306,7 @@
         <question>
             <config>
                 <id>20</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Tu as mal à la tête?</literal>
             </config>
             <source>
@@ -316,7 +316,7 @@
         <question>
             <config>
                 <id>21</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Tu as mal au ventre?</literal>
             </config>
             <source>
@@ -326,7 +326,7 @@
         <question>
             <config>
                 <id>22</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Tu as mal à la gorge?</literal>
             </config>
             <source>
@@ -335,8 +335,18 @@
         </question>
         <question>
             <config>
+                <id>23</id>
+                <theme>1</theme>
+                <literal>Ici?</literal>
+            </config>
+            <source>
+                <v>"c'est"? "ici" "que tu as mal"? "?"</v>
+            </source>
+        </question>
+        <question>
+            <config>
                 <id>24</id>
-                <theme>0</theme>
+                <theme>5</theme>
                 <literal>Ton copain veut pas jouer avec toi?</literal>
             </config>
             <source>
@@ -346,27 +356,27 @@
         <question>
             <config>
                 <id>25</id>
-                <theme>0</theme>
-                <literal>Un copain a prit un de tes jouets?</literal>
+                <theme>5</theme>
+                <literal>Un copain a pris un de tes jouets?</literal>
             </config>
             <source>
-                <v>${camarades} ("a prit" | "t'as piqué" | "t'as volé") ("un de tes" | "ton") "jouet?"</v>
+                <v>${camarades} ("a pris" | "t'as piqué" | "t'as volé") ("un de tes" | "ton") "jouet?"</v>
             </source>
         </question>
         <question>
             <config>
                 <id>26</id>
-                <theme>0</theme>
-                <literal>Un copain a prit le jeu avec lequel tu voulais jouer?</literal>
+                <theme>5</theme>
+                <literal>Un copain a pris le jeu avec lequel tu voulais jouer?</literal>
             </config>
             <source>
-                <v>${camarades} ("a prit" | "t'as piqué" | "t'as volé") ("un des" | "le") "jouet?" ("avec lequel tu" ("voulais jouer" | "jouais"))? "?"</v>
+                <v>${camarades} ("a pris" | "t'as piqué" | "t'as volé") ("un des" | "le") "jouet?" ("avec lequel tu" ("voulais jouer" | "jouais"))? "?"</v>
             </source>
         </question>
         <question>
             <config>
                 <id>27</id>
-                <theme>0</theme>
+                <theme>5</theme>
                 <literal>Qui?</literal>
             </config>
             <source>
@@ -377,8 +387,8 @@
         <question>
             <config>
                 <id>28</id>
-                <theme>1</theme>
-                <literal>Est-ce que tu dois aller aux Toilette?</literal>
+                <theme>0</theme>
+                <literal>Est-ce que tu dois aller aux toilettes?</literal>
             </config>
             <source>
                 <v>${avoir-besoin} ("aller aux Toilette?" | "faire pipi?")</v>
@@ -387,7 +397,7 @@
         <question>
             <config>
                 <id>29</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>Est-ce que tu t'es fait pipi dessus?</literal>
             </config>
             <source>
@@ -397,28 +407,28 @@
         <answer>
             <config>
                 <id>30</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>Tu peux y aller.</literal>
             </config>
             <source>
                 <v>"Vas-y."</v>
-                <v>"Tu peux" "y"? "aller" "aux Toilette"? "."</v>
+                <v>"Tu peux" "y"? "aller" "aux toilette"? "."</v>
             </source>
         </answer>
         <answer>
             <config>
                 <id>31</id>
-                <theme>1</theme>
-                <literal>Attend la pause.</literal>
+                <theme>0</theme>
+                <literal>Attends la pause.</literal>
             </config>
             <source>
-                <v>"Attend la pause." | "Pas tout de suite."</v>
+                <v>"Attends la pause." | "Pas tout de suite."</v>
             </source>
         </answer>
         <question>
             <config>
                 <id>32</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>Tu peux attendre?</literal>
             </config>
             <source>
@@ -429,8 +439,8 @@
         <answer>
             <config>
                 <id>33</id>
-                <theme>1</theme>
-                <literal>Attend 5 minutes.</literal>
+                <theme>0</theme>
+                <literal>Attends 5 minutes.</literal>
             </config>
             <source>
                 <v>"Dans quelques minutes" | "Dans 5 minutes"</v>
@@ -440,38 +450,38 @@
         <question>
             <config>
                 <id>34</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>Tu veux qu'un copain t'accompagne?</literal>
             </config>
             <source>
-                <v>${avoir-besoin} "qu'un" ${camarades} ("t'accompagne?" | "viennes avec toi?")</v>
+                <v>${avoir-besoin} "qu'un" ${camarades} ("t'accompagne?" | "vienne avec toi?")</v>
             </source>
         </question>
         <answer>
             <config>
                 <id>35</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>C'est pas grave</literal>
             </config>
             <source>
-                <v>"c'est"? "pas grave."</v>
+                <v>("C'est pas grave" | "C'est pas un problème") ${pas-inquietude}?</v>
                 <v>("c'est"? "pas un problème.") | "Aucun problème." | "pas de problème"</v>
             </source>
         </answer>
         <answer>
             <config>
                 <id>36</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>On va te trouver des nouveaux vêtements</literal>
             </config>
             <source>
-                <v>"On va" "te"? "trouver" ("des" | "une") "nouveau"? "propre"? ("culotte" | "vêtements" | "habits" | "slip") "."</v>
+                <v>"On va" "te"? "trouver" ("des" | "une") "nouveau"? "propre"? ("culotte" | "vêtements" | "habits" | "slip") ${pas-inquietude}? "."</v>
             </source>
         </answer>
         <answer>
             <config>
                 <id>37</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>Reste avec moi pendant la pause.</literal>
             </config>
             <source>
@@ -482,10 +492,10 @@
             <config>
                 <id>38</id>
                 <theme>2</theme>
-                <literal>Tu n'as pas comprit ce qu'il fallait faire?</literal>
+                <literal>Tu n'as pas compris ce qu'il fallait faire?</literal>
             </config>
             <source>
-                <v>${avoir-interrogatif} "comprit" ("ce qu'il fallait faire" | "la consigne") "?"</v>
+                <v>${avoir-interrogatif} "compris" ("ce qu'il fallait faire" | "la consigne") "?"</v>
             </source>
         </question>
         <question>
@@ -557,7 +567,7 @@
             </config>
             <source>
                 <v>"Tu as oublié tes affaires de gym?"</v>
-                <v>"Tu n'a pas" ("pensé à prendre" | "pris") "tes" ("affaires" | "habits") "de" ("sports" | "gym") "?"</v>
+                <v>"Tu n'as pas" ("pensé à prendre" | "pris") "tes" ("affaires" | "habits") "de" ("sports" | "gym") "?"</v>
             </source>
         </question>
         <question>
@@ -577,8 +587,8 @@
                 <literal>Je vais t'en prêter</literal>
             </config>
             <source>
-                <v>"Je vais t'en prêter"</v>
-                <v>"Ne t'inquiète pas,"? "je vais" ("t'en" ("prêter" | "passer" | "donner" | "trouver") | "te ("prêter" | "passer" | "donner" | "trouver") ("des affaires" | "des habits" ("de sport" | "de gym"))) "?"</v>
+                <v>"Je vais t'en prêter" ${pas-inquietude}?</v>
+                <v>${pas-inquietude}? "je vais" ("t'en" ("prêter" | "passer" | "donner" | "trouver") | "te ("prêter" | "passer" | "donner" | "trouver") ("des affaires" | "des habits" ("de sport" | "de gym"))) "?"</v>
             </source>
         </answer>
         <answer>
@@ -604,7 +614,7 @@
         <question>
             <config>
                 <id>50</id>
-                <theme>4</theme>
+                <theme>3</theme>
                 <literal>Tes parents te manquent?</literal>
             </config>
             <source>
@@ -615,17 +625,17 @@
         <answer>
             <config>
                 <id>51</id>
-                <theme>4</theme>
+                <theme>3</theme>
                 <literal>Ne t'inquiète pas.</literal>
             </config>
             <source>
-                <v>"Ne t'inquiète pas."</v>
+                <v>${pas-inquietude}</v>
             </source>
         </answer>
         <question>
             <config>
                 <id>52</id>
-                <theme>4</theme>
+                <theme>3</theme>
                 <literal>Veux-tu rester un moment tranquillement avec moi?</literal>
             </config>
             <source>
@@ -635,7 +645,7 @@
         <question>
             <config>
                 <id>53</id>
-                <theme>4</theme>
+                <theme>3</theme>
                 <literal>Veux-tu rester un moment avec moi avec un livre?</literal>
             </config>
             <source>
@@ -645,7 +655,7 @@
         <question>
             <config>
                 <id>54</id>
-                <theme>4</theme>
+                <theme>3</theme>
                 <literal>Veux-tu un doudou?</literal>
             </config>
             <source>
@@ -655,7 +665,7 @@
         <question>
             <config>
                 <id>55</id>
-                <theme>4</theme>
+                <theme>3</theme>
                 <literal>Veux-tu t'asseoir sur mes genoux?</literal>
             </config>
             <source>
@@ -665,44 +675,54 @@
         <answer>
             <config>
                 <id>56</id>
-                <theme>4</theme>
+                <theme>3</theme>
                 <literal>Tu les retrouveras tout bientôt.</literal>
             </config>
             <source>
-                <v>"Tu les" ("retrouveras" | "reveras") "(tout"? "bientôt." | "tout à l'heure" | "dans peu de temps")</v>
+                <v>"Tu les" ("retrouveras" | "reveras") "(tout"? "bientôt." | "tout à l'heure" | "dans peu de temps") ${pas-inquietude}?</v>
             </source>
         </answer>
         <question>
             <config>
                 <id>57</id>
-                <theme>5</theme>
+                <theme>4</theme>
                 <literal>Es-tu en colère?</literal>
             </config>
-            <source/>
+            <source>
+                <v>("Es-tu" | "Tu es") ("en colère" | "fâché") ("contre" ${camarades})? "?"</v>
+            </source>
         </question>
         <question>
             <config>
                 <id>58</id>
-                <theme>5</theme>
+                <theme>4</theme>
                 <literal>As-tu peur?</literal>
             </config>
-            <source/>
+            <source>
+                <v>("Es-tu" | "Tu es") "effrayé"</v>
+                <v>("As-tu" | "Tu as") ("peur" | "la trouille") "sans tes parents"? "?"</v>
+            </source>
         </question>
         <question>
             <config>
                 <id>59</id>
-                <theme>5</theme>
+                <theme>4</theme>
                 <literal>Es-tu triste?</literal>
             </config>
-            <source/>
+            <source>
+                <v>("Es-tu" | "Tu es") "triste?"</v>
+            </source>
         </question>
         <question>
             <config>
                 <id>60</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>As-tu des démangeaisons ?</literal>
             </config>
-            <source/>
+            <source>
+                <v>${avoir-interrogatif} "des démangeaisons?"</v>
+                <v>"est-ce que"? "ça te" ("gratte" | "démange") "?"</v>
+            </source>
         </question>
         <question>
             <config>
@@ -710,28 +730,34 @@
                 <theme>2</theme>
                 <literal>As-tu perdu quelque chose ?</literal>
             </config>
-            <source/>
+            <source>
+                <v>("As-tu" | "Tu as") ("perdu" | "égaré") ("quelque chose" | "ton doudou" | "ton dessin" | "ta trousse")</v>
+            </source>
         </question>
         <answer>
             <config>
                 <id>62</id>
-                <theme>1</theme>
+                <theme>0</theme>
                 <literal>On va nettoyer ça, ne t’inquiète pas.</literal>
             </config>
-            <source/>
+            <source>
+                <v>"viens"? "on va" "tout"? ("nettoyer" | "laver") ("tout"? "ça") ${pas-inquietude}?</v>
+            </source>
         </answer>
         <answer>
             <config>
                 <id>63</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Respire calmement, ça va passer.</literal>
             </config>
-            <source/>
+            <source>
+                <v>("Respire" | "Inspire" "expire"?) ("calmement" | "tranquillement" | "doucement")? ${pas-inquietude}?</v>
+            </source>
         </answer>
         <answer>
             <config>
                 <id>64</id>
-                <theme>3</theme>
+                <theme>1</theme>
                 <literal>Il faut que tu boives quelque chose</literal>
             </config>
             <source/>

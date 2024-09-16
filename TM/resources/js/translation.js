@@ -32,7 +32,7 @@ function translate(id) {
     http2.onreadystatechange = () => {
         if (http2.readyState === 4 && http2.status === 200) {
             let json = JSON.parse(http2.responseText);
-            window.location.href = "/choose_picto.html?target=" + getQueryStringArgument("lang") + "&theme=" + getQueryStringArgument("theme") + "&literal=" + json.literal + "&audio-url=" + json.resource_audio_path + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
+            window.location.href = "/choose_picto.html?target=" + getQueryStringArgument("lang") + "&theme=" + getQueryStringArgument("theme") + "&literal=" + json.literal + "&audio-url=" + json.resource_audio_path + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme") + "&type=" + json.s_type;
         }
     }
     http2.send();
@@ -104,11 +104,13 @@ function recoverAudio(cks) {
             if (rotatingAnims) {
                 cancelRotatingAnims();
             }
+            triggerTutorialHook("recording_success");
         } else if (http.readyState === 4) {
             document.querySelector(".section-header").innerHTML = ERROR_TRANSLATIONS_BOX_CONTENT;
             if (rotatingAnims) {
                 cancelRotatingAnims();
             }
+            triggerTutorialHook("recording_failure");
         }
     };
 
@@ -244,9 +246,25 @@ function stopRecording() {
         hk.suspend();
         recorder.stop();
         recoverAudio(chunks);
+
+        triggerTutorialHook("recording_stopped");
     }, 1000);  // Wait for the last chunk to be recorded
 
     animateSoundbarsRotation(300);
+}
+
+function triggerRecordingIfNotStarted() {
+    if (recorder.state !== "recording") {
+        let el = document.querySelector(".footer-main-button");
+        chunks = [];
+        recorder.start(1000);
+        hk.resume();
+        el.style.color = "red";
+        document.querySelector(".section-header").textContent = WAITING_TRANSLATIONS_BOX_CONTENT;
+
+        animateSoundbarsEnter(300);
+        requestAnimationFrame(animateSoundbarsBasedOnSound);
+    }
 }
 
 /**
@@ -288,7 +306,7 @@ function setupAnimations() {
     document.getElementById("content-answers").style.width = qEl.getBoundingClientRect().width + "px";
 
     document.querySelector(".taskbar-icon").addEventListener("click", () => {
-        window.history.go(-(hashchanges_count + 1));
+        window.location.href = "/choose_theme.html#" + getQueryStringArgument("lang") + "-" + getQueryStringArgument("gender")
     });
 }
 

@@ -2,6 +2,7 @@ import json
 import os
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+from time import time
 
 import openpyxl
 
@@ -194,18 +195,24 @@ LANG_CODES = {
 
 
 def read_excel(file_path):
+    t = time()
+
+    print("\u001b[38;5;14mReading excel file...")
     wb = openpyxl.load_workbook(open(file_path, "rb"))
     sheet = wb.active
 
     """ Source """
+    print("\u001b[38;5;7mLoading source sentences...")
     table = sheet.tables["source"]
     if not table:
-        raise ValueError("Table 'source' not found in the file")
+        print("Table 'source' not found in the file", file=sys.stderr)
+        sys.exit(1)
     ref = table.ref.split(":")
 
     if len(sheet[ref[0]:ref[1]][0]) < 5:
-        raise ValueError("Table must have minimum 5 columns: ID, Type, Theme, Question, 1st translation, "
-                         "[2nd translation ...]")
+        print("Table must have minimum 5 columns: ID, Type, Theme, Question, 1st translation, "
+              "[2nd translation ...]", file=sys.stderr)
+        sys.exit(1)
 
     data = {}
     translations_columns = [x.name for x in table.tableColumns[4:]]
@@ -218,6 +225,10 @@ def read_excel(file_path):
         if row[1].value not in "QA":
             raise ValueError("Invalid value for Type column. Must be either 'Q' or 'A'")
 
+    print("\u001b[38;5;7mLoaded data from source table:\n\ttarget_languages =", translations_columns, "\n\tthemes =",
+          list(themes))
+    print("\u001b[38;5;7mFound", len(data), "entries")
+
     """ Variants """
     table = sheet.tables["variants"]
     if not table:
@@ -225,12 +236,17 @@ def read_excel(file_path):
 
     ref = table.ref.split(":")
     if len(sheet[ref[0]:ref[1]][0]) != 3:
-        raise ValueError("Variants table must have exactly 3 columns: Id, Source sentence, Variant sentence")
+        print("Variants table must have exactly 3 columns: Id, Source sentence, Variant sentence", file=sys.stderr)
+        sys.exit(1)
     variants = defaultdict(list)
 
     for row in sheet[ref[0]:ref[1]][1:]:
         variants[row[0].value].append(row[2].value)
 
+    print("\u001b[38;5;7mLoading of variants complete")
+    print("\u001b[38;5;7mFound", len(variants), "variants")
+
+    print("\u001b[38;5;14mExcel file read in", round(time() - t, 2), "seconds")
     return list(themes), translations_columns, data, variants
 
 
@@ -262,6 +278,9 @@ def prepare_data_entry(id_, type_, theme, src):
 
 
 def write_xml(src_path, data, overwrite_data=True, overwrite_translations=True):
+    t = time()
+    print(
+        f"\u001b[38;5;14mWriting data to XML, overwrite-data={overwrite_data}, overwrite-translations={overwrite_translations}...")
     themes, languages, data, variants = data
 
     tree_data = ET.parse(os.path.join(src_path, "data.xml"))
@@ -270,12 +289,16 @@ def write_xml(src_path, data, overwrite_data=True, overwrite_translations=True):
     tree_data_root = tree_data.getroot().find("src")
     tree_translations_root = tree_translations.getroot()
 
+    num_variants_overwritten = 0
+    num_translations_overwritten = 0
+
     for (id_, type_, theme, src, translations) in data.values():
         element = _find_data_by_id(tree_data_root, str(id_))
         if element is None:
             element = prepare_data_entry(id_, type_, str(themes.index(theme)), src)
             tree_data_root.append(element)
         elif overwrite_data:
+            num_variants_overwritten += 1
             element.clear()
             element.extend(
                 prepare_data_entry(
@@ -310,6 +333,7 @@ def write_xml(src_path, data, overwrite_data=True, overwrite_translations=True):
                 tr_target.set("lang", lang)
                 tr_target.text = text
             elif overwrite_translations:
+                num_translations_overwritten += 1
                 tr_target.clear()
                 tr_target.set("lang", lang)
                 tr_target.text = text
@@ -340,14 +364,36 @@ def write_xml(src_path, data, overwrite_data=True, overwrite_translations=True):
     tree_data.write(os.path.join(src_path, "data.xml"), encoding="utf-8")
     tree_translations.write(os.path.join(src_path, "translations.xml"), encoding="utf-8")
 
-    print("Data successfully written to data.xml, with themes list: ", {i: k for i, k in enumerate(themes)})
-    print("Translations successfully written to translations.xml")
+    print("\u001b[38;5;7mJSON config successfully written to config.json")
+    print("\u001b[38;5;7mData successfully written to data.xml,", num_variants_overwritten, "variants overwritten")
+    print("\u001b[38;5;7mTranslations successfully written to translations.xml,", num_translations_overwritten,
+          "\u001b[38;5;7mtranslations overwritten")
+
+    print("\u001b[38;5;14mAll data was successfully written in", round(time() - t, 2), "seconds,",
+          len(data) + len(variants),
+          "entries written")
 
 
 if __name__ == '__main__':
+    import sys
+
+    args = sys.argv[1:]
+    if len(args) == 1 and args[0] == "--help":
+        print("Usage: excelreader.exe <path to excel file> <path to config folder> [--overwrite-data] "
+              "[--overwrite-translations]")
+        sys.exit(0)
+    print("\u001b[1m\u001b[38;5;2mStarting...\u001b[0m")
+    t = time()
+    if len(args) < 2 or args[1].startswith("--"):
+        if len(args) == 0 or args[0].startswith("--"):
+            args.insert(0, r"C:\Users\amosa\OneDrive\IdeaProjects\TM\TM\resources\data\config\data.xlsx")
+            print(f"\u001b[38;5;3mNo arguments provided for excel file, using default value '{args[0]}'")
+        args.insert(1, r"C:\Users\amosa\OneDrive\IdeaProjects\TM\TM\resources\data\config")
+        print(f"\u001b[38;5;3mNo arguments provided for config folder, using default value '{args[1]}'")
     write_xml(
-        "./resources/data/config/",
-        read_excel("resources/data/config/data.xlsx"),
-        overwrite_data=True,
-        overwrite_translations=True
+        args[1],
+        read_excel(args[0]),
+        overwrite_data="--overwrite-data" in args,
+        overwrite_translations="--overwrite-translations" in args
     )
+    print("\u001b[1m\u001b[38;5;2mCompleted,", round(time() - t, 2), "seconds elapsed\u001b[0m")

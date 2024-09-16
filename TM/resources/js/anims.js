@@ -59,7 +59,6 @@ function reloadFromHash() {
 
 window.addEventListener("hashchange", () => {
     reloadFromHash();
-    hashchanges_count += 1;
 }, true);
 
 prepareCursor = function () {

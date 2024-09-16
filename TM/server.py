@@ -24,7 +24,7 @@ DB_PATH = "./resources/data/db.db"
 
 should_setup = True
 should_rebuild_audio = False
-should_retrain = False
+should_retrain = True
 if should_setup:  # Set to false after first run to remove the necessity of another configuration
     config.setup(DB_PATH, hard=True, rebuild_audio=should_rebuild_audio)
 
@@ -205,8 +205,10 @@ def translate():
     target = flask.request.args.get("target")
     if not id_ or not target:
         return flask.abort(400)
-    return query_db("SELECT * FROM translations WHERE source_id=? AND target_id=?", (id_, target),
-                    one=True) or flask.abort(400)
+    json_res = query_db("SELECT * FROM translations WHERE source_id=? AND target_id=?", (id_, target),
+                        one=True) or flask.abort(400)
+    json_res["s_type"] = query_db("SELECT s_type FROM source_sentences WHERE id=?", (id_,), one=True)["s_type"]
+    return json_res
 
 
 app.run()

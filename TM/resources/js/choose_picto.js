@@ -28,13 +28,22 @@ function setupTaskbar() {
     };
     http2.send();
     document.querySelector(".taskbar-icon").addEventListener("click", () => {
-        window.history.back();
+        window.location.href = "/translation.html?lang=" + getQueryStringArgument("target") + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
     });
 
 }
 
+function setupPicto() {
+    if (getQueryStringArgument("type") === "1") {
+        document.getElementById("1").querySelector(".box-icon-holder").innerHTML = "<i class='fas fa-question'></i>"
+        document.getElementById("1").querySelector(".box-name").innerHTML = "Ich verstehe nicht";
+        document.getElementById("1").querySelector(".box-name").style.fontSize = "3.5em";
+    }
+}
+
 window.addEventListener("load", () => {
     setupTaskbar();
+    setupPicto();
 
     document.querySelector(".header").textContent = getQueryStringArgument("literal");
     document.querySelector(".header").dataset.audio_url = getQueryStringArgument("audio-url");
@@ -46,5 +55,15 @@ window.addEventListener("load", () => {
     document.querySelector(".footer-right-button").addEventListener("click", () => {
         window.location.href = "/translation.html?lang=" + getQueryStringArgument("target") + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme") + "#answers";
     });
+
+    document.querySelectorAll(".box-container").forEach((box) => {
+        box.addEventListener("click", () => {
+            window.location.href = "/translation.html?lang=" + getQueryStringArgument("target") + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme") + "&literal=" + getQueryStringArgument("literal") + "&picto=" + box.id + "#questions";
+        });
+    });
+
+    setTimeout(() => {
+        document.querySelector(".header").click();
+    }, 500)
 });
 

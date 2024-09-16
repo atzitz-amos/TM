@@ -59,6 +59,8 @@
     font-weight: 900;
 
     width: 100%;
+
+    overflow: auto;
 }
 
 .list-section .section {
