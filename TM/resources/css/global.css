@@ -353,3 +353,8 @@ body {
     padding: 20px;
     outline: 1px solid white;
 }
+
+
+body.no-scroll .scrollable-list {
+    overflow: hidden !important;
+}

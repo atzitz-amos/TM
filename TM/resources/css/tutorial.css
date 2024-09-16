@@ -15,8 +15,8 @@
     background: #181334;
     color: #91B0A8;
     border-radius: 15px;
-    font-size: 4em;
-    padding: 10px 20px 20px 10px;
+    font-size: 3em;
+    padding: 20px 40px 20px 10px;
 
     opacity: 0;
     pointer-events: none;
@@ -36,6 +36,7 @@
 
     box-shadow: 13px 17px 20px 8px #090634;
 }
+
 
 .tutorial.arrow-bottom::after, .tutorial.arrow-top::after {
     content: '';
@@ -144,6 +145,7 @@
     width: 90%;
     border: 0;
     background: #84d0ff;
+    padding: 10px 0;
 }
 
 .tutorial.shake {
@@ -170,10 +172,30 @@
 }
 
 
-.tutorial-content i {
+.tutorial-content :not(span) > i {
     margin-top: 100px;
     margin-bottom: 50px;
 }
+
+.tutorial-content:has(> span)::first-letter {
+    margin-left: 0;
+}
+
+.tutorial-content span {
+    width: 80px;
+    height: 80px;
+    background: #a0d39e;
+    color: #1D1D1D;
+    border-radius: 50%;
+    margin: 20px auto 10px auto;
+    padding: 15px;
+    font-size: 60px;
+    box-sizing: content-box;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
 
 @keyframes shake-tutorial {
     0% {

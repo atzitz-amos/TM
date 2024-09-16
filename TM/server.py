@@ -4,6 +4,7 @@ import sqlite3
 import flask
 import pydub
 import speech_recognition as sr
+from pydub.exceptions import CouldntDecodeError
 from speech_recognition import UnknownValueError
 
 from TM import model, config
@@ -22,9 +23,9 @@ print(allowed_files)
 
 DB_PATH = "./resources/data/db.db"
 
-should_setup = True
+should_setup = False
 should_rebuild_audio = False
-should_retrain = True
+should_retrain = False
 if should_setup:  # Set to false after first run to remove the necessity of another configuration
     config.setup(DB_PATH, hard=True, rebuild_audio=should_rebuild_audio)
 
@@ -182,7 +183,10 @@ def recognize():
     if not audio:
         return flask.abort(400)
     audio.save("./resources/temp/audio.ogg")
-    pydub.AudioSegment.from_file("./resources/temp/audio.ogg").export('./resources/temp/audio.wav', format="wav")
+    try:
+        pydub.AudioSegment.from_file("./resources/temp/audio.ogg").export('./resources/temp/audio.wav', format="wav")
+    except CouldntDecodeError:
+        return flask.abort(400)
     r = sr.Recognizer()
     with sr.AudioFile("./resources/temp/audio.wav") as source:
         data = r.record(source)
@@ -209,6 +213,3 @@ def translate():
                         one=True) or flask.abort(400)
     json_res["s_type"] = query_db("SELECT s_type FROM source_sentences WHERE id=?", (id_,), one=True)["s_type"]
     return json_res
-
-
-app.run()

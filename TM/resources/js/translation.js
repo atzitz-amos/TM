@@ -8,6 +8,7 @@ let hk;
 let chunks = [];
 
 let areSoundbarsReady = false;
+let IS_RECORDING = false;
 
 const __defaultHash = "questions";
 const __animationsMap = animationsMap({
@@ -247,6 +248,7 @@ function stopRecording() {
         recorder.stop();
         recoverAudio(chunks);
 
+        IS_RECORDING = false;
         triggerTutorialHook("recording_stopped");
     }, 1000);  // Wait for the last chunk to be recorded
 
@@ -254,7 +256,7 @@ function stopRecording() {
 }
 
 function triggerRecordingIfNotStarted() {
-    if (recorder.state !== "recording") {
+    if (recorder.state !== "recording" && !IS_RECORDING) {
         let el = document.querySelector(".footer-main-button");
         chunks = [];
         recorder.start(1000);
@@ -284,6 +286,8 @@ async function setupRecording() {
     });
     el.addEventListener("click", e => {
         if (recorder.state !== "recording") {
+            IS_RECORDING = true;
+
             chunks = [];
             recorder.start(1000);
             hk.resume();
@@ -292,6 +296,8 @@ async function setupRecording() {
 
             animateSoundbarsEnter(300);
             requestAnimationFrame(animateSoundbarsBasedOnSound);
+
+            triggerTutorialHook("recording_started");
         } else {
             stopRecording()
         }

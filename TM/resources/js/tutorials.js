@@ -77,10 +77,16 @@ function preventAllClicksExcept(element, callbackOut, callbackIn) {
             callbackIn();
         }
     };
+    let d = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
     document.body.addEventListener("click", c, {capture: true});
+    document.body.classList.add("no-scroll");
 
     let cancelFunc = () => {
         document.body.removeEventListener("click", c, {capture: true});
+        document.body.classList.remove("no-scroll");
         CANCEL_FUNCTIONS.pop(CANCEL_FUNCTIONS.indexOf(cancelFunc));
     };
     CANCEL_FUNCTIONS.push(cancelFunc);
@@ -151,7 +157,7 @@ const TUTORIALS = [
             document.querySelector(".tutorial-content").innerText = "Cliquez ici pour sélectionner la langue.";
         };
 
-        showTutorialOn(document.querySelector("#content-language .box[data-lang='DE']"), "Imaginons que vous conversiez avec un de vos élève. La première étape consiste à choisir la langue vers laquelle vous aller traduire.", callbackOut);
+        showTutorialOn(document.querySelector("#content-language .box[data-lang='DE']"), "Quand un élève arrive avec un problème, commencez par choisir la langue en cliquant ici.", callbackOut);
         let cancel = preventAllClicksExcept(document.querySelector("#content-language .box[data-lang='DE']"), callbackOut, () => {
             cancel();
             stepTutorial();
@@ -164,7 +170,7 @@ const TUTORIALS = [
             document.querySelector(".tutorial-content").innerText = "Cliquer ici pour sélectionner le sexe de l'élève.";
         };
 
-        showTutorialOn(document.querySelector(".box[data-gender='M']"), "Ensuite, il faut indiquer le sexe de l'élève avec lequel vous conversez.", callbackOut);
+        showTutorialOn(document.querySelector(".box[data-gender='M']"), "Indiquez le sexe de l'élève", callbackOut);
         let cancel = preventAllClicksExcept(document.querySelector(".box[data-gender='M']"), callbackOut, () => {
             cancel();
             stepTutorial();
@@ -173,11 +179,16 @@ const TUTORIALS = [
     () => {
         let cancel = preventAllClicksExcept(null, () => {
         });
-        showTutorialOn(null, "Ces étapes peuvent être néanmoins répétitive, l'élève parlant en fin de compte toujours la même langue et étant toujours du même sexe. DuoMots inclut donc une fonctionnalité pour automatiser ces deux étapes.", () => {
+        showTutorialOn(null, "Revenons à l'accueil pour voire une autre façon, plus rapide d'accéder à cette page.", () => {
             cancel();
             stepTutorial();
         });
-        document.querySelector(".tutorial-next").innerText = "Retourner à l'accueil";
+        document.querySelector(".tutorial-next").innerHTML = "<i class=\"fas fa-arrow-up\" aria-hidden=\"true\" style=\"\n" +
+            "    display: inline-block;\n" +
+            "    transform: rotate(-45deg);\n" +
+            "    margin-right: 15px;\n" +
+            "    font-size: 120%;\n" +
+            "\"></i>Retourner à l'accueil";
     },
     () => {
         window.location.href = "/#language";
@@ -186,7 +197,7 @@ const TUTORIALS = [
             shakeTutorial();
             showTutorialOn(document.querySelector(".footer-right-button"), "Cliquz ici pour accéder à l'onglet \"&Eacute;l&egrave;ves\"", callbackOut);
         };
-        showTutorialOn(document.querySelector(".footer-right-button"), "DuoMots vous permet de conserver une liste de vos élèves allophones. Cliquez ici pour y accéder.", callbackOut);
+        showTutorialOn(document.querySelector(".footer-right-button"), "DuoMots vous permet de conserver une liste de vos élèves allophones.", callbackOut);
         let cancel = preventAllClicksExcept(document.querySelector(".footer-right-button"), callbackOut, () => {
             cancel();
             stepTutorial();
@@ -200,7 +211,7 @@ const TUTORIALS = [
                 shakeTutorial();
                 showTutorialOn(document.querySelector(".add-button:not(.add-student-button)"), "Cliquez ici pour ajouter un élève.", callbackOut);
             };
-            showTutorialOn(document.querySelector(".add-button:not(.add-student-button)"), "Vous pouvez ajouter un élève en cliquant ici.", callbackOut);
+            showTutorialOn(document.querySelector(".add-button:not(.add-student-button)"), "Ajoutez un élève", callbackOut);
             let cancel = preventAllClicksExcept(document.querySelector(".add-button:not(.add-student-button)"), callbackOut, () => {
                 cancel();
                 stepTutorial();
@@ -219,7 +230,7 @@ const TUTORIALS = [
                 cancel();
                 stepTutorial();
             });
-        }, 1500);
+        }, 2000);
     },
     () => {
         window.location.href = "/#add-students";
@@ -254,14 +265,14 @@ const TUTORIALS = [
             cancel();
             stepTutorial();
         });
-        showTutorialOn(null, "Choisir un élève vous permet ainsi d'accéder directement à cette page sans passer par les étapes de sélection de la langue et du sexe.", () => {
+        showTutorialOn(null, "Vous revoila à la même page !", () => {
             cancel();
             stepTutorial();
         });
     },
     () => {
         window.location.href = "/choose_theme.html#DE-M";
-        showTutorialOn(document.querySelector(".header"), "À chaque fois que l'icône d'un haut-parleur apparaît, vous pouvez cliquer dessus pour écouter le mot ou la phrase.", () => {
+        showTutorialOn(document.querySelector(".header"), "Cette icône, <span><i class='fas fa-volume-up'></i></span> indique que l'élément peut être lu à haute voix", () => {
             cancel();
             stepTutorial();
         });
@@ -276,7 +287,7 @@ const TUTORIALS = [
             shakeTutorial();
             showTutorialOn(document.querySelector(".header"), "Cliquez ici pour écouter la phrase.", callbackOut);
         };
-        showTutorialOn(document.querySelector(".header"), "Cette phrase demande à l'élève de choisir ce qu'il voulait dire. Commencez toujours par cliquer sur cette phrase pour la lire à haute voix et que l'élève comprenne ce qu'il doit faire.", callbackOut);
+        showTutorialOn(document.querySelector(".header"), "Commencez toujours par cliquer sur cette phrase pour expliquer à l'élève ce qu'il doit faire.", callbackOut);
         let cancel = preventAllClicksExcept(document.querySelector(".header"), callbackOut, () => {
             cancel();
         });
@@ -285,11 +296,11 @@ const TUTORIALS = [
         window.location.href = "/choose_theme.html#DE-M";
         document.querySelector(".tutorial").classList.remove("visible");
         setTimeout(() => {
-            showTutorialOn(null, "Dans le cadre d'une vrai utilisation, vous passeriez maintenant le téléphone à l'élève pour qu'il puisse choisir ce qu'il voulait dire. Pour ce tutoriel, vous jouerez également le rôle de l'élève.");
+            showTutorialOn(null, "C'est maintenant à l'élève de jouer. Dans le cadre d'une vrai utilisation, passez le téléphone à l'élève.");
             let pane = document.createElement("div");
             pane.classList.add("tutorial-pane");
             document.body.appendChild(pane);
-        }, 1000);
+        }, 500);
     },
     () => {
         let pane = document.querySelector(".tutorial-pane");
@@ -299,7 +310,7 @@ const TUTORIALS = [
             shakeTutorial();
             document.querySelector(".tutorial-content").innerText = "Dans le cadre du tutoriel, appuyer sur ce thème.";
         };
-        showTutorialOn(document.getElementById("0"), "L'élève peut maintenant choisir parmi les thèmes, à l'aide des images, le thème s'approchant le plus de ce qu'il voulait dire.", callbackOut);
+        showTutorialOn(document.getElementById("0"), "L'élève choisit parmi les thèmes, à l'aide des images, ce qu'il voulait dire.", callbackOut);
         let cancel = preventAllClicksExcept(document.getElementById("0"), callbackOut, () => {
             cancel();
         });
@@ -313,7 +324,7 @@ const TUTORIALS = [
                 shakeTutorial();
                 showTutorialOn(document.querySelector(".confirm-button"), "Cliquer ici pour confirmer le thème.", callbackOut);
             };
-            showTutorialOn(document.querySelector(".confirm-button"), "Le thème est lu à haute voix. Vous ou l'élève pouvez cliquer ici pour confirmer le thème ou bien choisir un autre thème en cliquant sur une autre image.", callbackOut);
+            showTutorialOn(document.querySelector(".confirm-button"), "Le thème est lu à haute voix. Cliquez sur <i>Sélectionner</i> pour confirmer votre choix.", callbackOut);
             let cancel = preventAllClicksExcept(document.querySelector(".confirm-button"),
                 callbackOut,
                 () => {
@@ -351,7 +362,7 @@ const TUTORIALS = [
         window.location.href = "/translation.html?lang=DE&gender=M&theme=0#answers";
         document.querySelector(".tutorial").classList.remove("visible");
         setTimeout(() => {
-            showTutorialOn(document.getElementById("content-answers"), "Ici se trouve la liste des réponses que vous pouvez donner à l'élève une fois que vous avez identifié son problème.");
+            showTutorialOn(document.getElementById("content-answers"), "Et ici se trouve la liste des réponses au problème de l'élève.");
             let cancel = preventAllClicksExcept(null, () => {
                 cancel();
                 stepTutorial();
@@ -365,7 +376,7 @@ const TUTORIALS = [
             shakeTutorial();
             showTutorialOn(document.querySelector(".content-answers .item"), "Cliquez sur cette phrase", callbackOut);
         };
-        showTutorialOn(document.querySelector(".content-answers .item"), "Vous pouvez cliquer sur une des phrases pour la traduire.", callbackOut);
+        showTutorialOn(document.querySelector(".content-answers .item"), "Cliquez sur une des phrases pour traduire.", callbackOut);
         let cancel = preventAllClicksExcept(document.querySelector(".content-answers .item"),
             callbackOut,
             () => {
@@ -382,7 +393,7 @@ const TUTORIALS = [
             shakeTutorial();
             showTutorialOn(document.getElementById("0"), "Cliquez ici", callbackOut);
         }
-        showTutorialOn(document.getElementById("0"), "La phrase est maintenant lue à haute voix. Repassez le téléphone à votre élève, celui-ci répond maintenant à la réponse de l'enseignant au moyen des pictogrammes, soit par <i>Je comprends</i> soit par <i>Je ne comprends pas</i>.", callbackOut);
+        showTutorialOn(document.getElementById("0"), "La traduction est lue à haute voix. Votre élève peut répondre grâce aux pictogrammes.", callbackOut);
         let cancel = preventAllClicksExcept(document.getElementById("0"),
             callbackOut,
             () => {
@@ -413,21 +424,25 @@ const TUTORIALS = [
                 shakeTutorial();
                 showTutorialOn(document.querySelector(".footer-main-button"), "Cliquez ici pour activer la reconnaissance vocale.", callbackOut);
             }
-            showTutorialOn(document.querySelector(".footer-main-button"), "Pour rendre le processus plus rapide, DuoMots supporte également la reconnaissance vocale. Cliquez ici pour mettre en route l'enregistrement.", callbackOut);
+            showTutorialOn(document.querySelector(".footer-main-button"), "DuoMots supporte également la reconnaissance vocale. Cliquez ici pour activer.", callbackOut);
             let cancel = preventAllClicksExcept(document.querySelector(".footer-main-button"),
                 callbackOut,
                 () => {
                     cancel();
-                    stepTutorial();
                 }
             );
         }, 1000);
     },
     () => {
         window.location.href = "/translation.html?lang=DE&gender=M&theme=0#questions";
-        showTutorialOn(null, "Dites quelque chose. Limitez-vous à des questions simples, non composées, auxquelles on peut toujours répondre par oui ou par non. Par exemple, demandez: <i>As-tu mal à la tête?</i> au lieu de <i>Tu as des douleurs vers la tête, la nuque?</i>.", () => {
-        });
+        document.querySelector(".tutorial").classList.remove("visible");
         triggerRecordingIfNotStarted();
+        showTutorialOn(null, "Dites quelque chose.<br><br> <i class='fas fa-exclamation-triangle'></i> Limitez-vous à des questions simples, non composées, auxquelles on peut toujours répondre par oui ou par non. Par exemple, demandez: <i>As-tu mal à la tête?</i> au lieu de <i>Tu as des douleurs vers la tête, la nuque?</i>.", () => {
+            shakeTutorial();
+        });
+        let cancel = preventAllClicksExcept(null, () => {
+            shakeTutorial();
+        });
     },
     () => {
         let element = document.querySelector(".translations-suggestions span");
@@ -436,11 +451,12 @@ const TUTORIALS = [
             setCookie("tutorialCurrentStep", tutorialCurrentStep, 365);
             return reupdateTutorial();
         }
+        CANCEL_FUNCTIONS.forEach(f => f());
         let callbackOut = () => {
             shakeTutorial();
             showTutorialOn(document.querySelector(".translations-suggestions span"), "Cliquez ici pour traduire.", callbackOut);
         };
-        showTutorialOn(document.querySelector(".translations-suggestions span"), "DuoMots pense avoir reconnu ce que vous vouliez dire. Si votre phrase était trop complexe et/ou trop différente de celle dans la base de donnée, il est possible que la phrase n'ait pas été bien reconnue. Dans ce cas, vous pouvez reprendre l'enregistrement en cliquant sur le microphone. Pour l'instant cliquez sur cette option pour la traduire.", callbackOut);
+        showTutorialOn(document.querySelector(".translations-suggestions span"), "DuoMots pense avoir reconnu ce que vous vouliez dire. Si votre phrase était trop complexe et/ou inconnue, il est possible que la phrase n'ait pas été bien reconnue. Dans ce cas, vous pouvez recommencer en cliquant sur le microphone. Pour l'instant cliquez sur cette option pour la traduire.", callbackOut);
         let cancel = preventAllClicksExcept(
             document.querySelector(".translations-suggestions span"),
             callbackOut,
@@ -451,29 +467,30 @@ const TUTORIALS = [
     },
     () => {
         suppressTutorial();
-
-        document.querySelector(".tutorial").classList.remove("visible");
-        let dialog = document.createElement("div");
-        dialog.classList.add("tutorial-dialog");
-        document.body.append(dialog);
-        let title = document.createElement("h1");
-        title.innerText = "Fin du tutoriel";
-        dialog.append(title);
-        let p = document.createElement("p");
-        p.innerText = "Vous avez terminé le tutoriel. Vous pouvez le relancer à tout moment en cliquant sur l'icône en forme de point d'interrogation en haut à droite.";
-        dialog.append(p);
-        let buttons = document.createElement("div");
-        buttons.classList.add("tutorial-buttons");
-        dialog.append(buttons);
-        let ok = document.createElement("button");
-        ok.innerText = "OK";
-        ok.addEventListener("click", () => {
-            document.body.removeChild(dialog);
-            tutorialCurrentStep = -1;
-            setCookie("tutorialCurrentStep", tutorialCurrentStep, 1);
-            window.location.href = "/";
-        });
-        buttons.appendChild(ok);
+        setTimeout(() => {
+            document.querySelector(".tutorial").classList.remove("visible");
+            let dialog = document.createElement("div");
+            dialog.classList.add("tutorial-dialog");
+            document.body.append(dialog);
+            let title = document.createElement("h1");
+            title.innerText = "Fin du tutoriel";
+            dialog.append(title);
+            let p = document.createElement("p");
+            p.innerText = "Vous avez terminé le tutoriel. Vous pouvez le relancer à tout moment en cliquant sur l'icône en forme de point d'interrogation en haut à droite.";
+            dialog.append(p);
+            let buttons = document.createElement("div");
+            buttons.classList.add("tutorial-buttons");
+            dialog.append(buttons);
+            let ok = document.createElement("button");
+            ok.innerText = "OK";
+            ok.addEventListener("click", () => {
+                document.body.removeChild(dialog);
+                tutorialCurrentStep = -1;
+                setCookie("tutorialCurrentStep", tutorialCurrentStep, 1);
+                window.location.href = "/";
+            });
+            buttons.appendChild(ok);
+        }, 1000);
     }
 ];
 let tutorialCurrentStep = parseInt(getCookie("tutorialCurrentStep")) || 0;
@@ -548,6 +565,8 @@ function triggerTutorialHook(hook) {
         }
 
     } else if (hook === "speaking_ended") {
+        stepTutorial();
+    } else if (hook === "recording_started" && tutorialCurrentStep === 21) {
         stepTutorial();
     } else if (hook === "recording_success" && tutorialCurrentStep === 22) {
         stepTutorial()
