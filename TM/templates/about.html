@@ -6,6 +6,7 @@
     <title>Index</title>
 
     <link href="../resources/css/global.css" rel="stylesheet">
+    <link href="../resources/css/about.css" rel="stylesheet">
 
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/56ede3712c.js"></script>
 </head>
@@ -22,7 +23,44 @@
     </div>
 </div>
 <div class="content">
-    <p></p>
+    <button class="collapsible">À propos de DuoMots</button>
+    <div class="collapsible-content">
+        <p>
+            DuoMots est une application visant à faciliter les échanges dans les classes primaires entre l'enseignant(e)
+            et
+            un(e) élève allophone. Utilisée dans un contexte bien déterminé afin d'éviter toute implication de
+            l'intelligence artificielle dans le processus de traduction, DuoMots s'inspire en grande partie de <a
+                href="https://babeldr.unige.ch/">BabelDr</a>, un outil similaire désigné pour le contexte médical.
+        </p>
+    </div>
+    <button class="collapsible">À propos de ce projet</button>
+    <div class="collapsible-content">
+        <p>
+            Ce projet a été réalisé dans le cadre de mon travail de maturité au Gymnase de Nyon sous la supervision de
+            Mme. Demissy.
+        </p>
+    </div>
+    <button class="collapsible">License</button>
+    <div class="collapsible-content copyright">
+        <p>
+            Copyright DuoMots [Amos Atzitz]
+        </p>
+        <br>
+        <br>
+        <p>
+            Licensed under the Apache License, Version 2.0 (the "License");
+            you may not use this file except in compliance with the License.
+            You may obtain a copy of the License at
+
+            <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>
+
+            Unless required by applicable law or agreed to in writing, software
+            distributed under the License is distributed on an "AS IS" BASIS,
+            WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+            See the License for the specific language governing permissions and
+            limitations under the License.
+        </p>
+    </div>
 </div>
 <div class="footer">
     <div class="floating-footer-border">
@@ -43,5 +81,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    let coll = document.getElementsByClassName("collapsible");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            let el = this;
+            document.querySelectorAll(".collapsible.active").forEach(function (content) {
+                if (content !== el)
+                    content.click();
+            });
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.height === "0px") {
+                content.style.height = content.scrollHeight + "px";
+            } else {
+                content.style.height = "0px";
+            }
+        });
+        coll[i].nextElementSibling.style.height = "0px";
+    }
+</script>
 </body>
 </html>

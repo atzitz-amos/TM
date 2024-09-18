@@ -1,0 +1,68 @@
+
+p {
+    margin: 0 100px;
+    text-align: justify;
+    font-style: italic;
+
+    font-size: 3.5em;
+}
+
+:not(.copyright) > p::first-letter {
+    margin-left: 50px;
+}
+
+p a {
+    text-decoration: underline;
+}
+
+.content {
+    overflow: auto;
+}
+
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    padding: 50px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 3em;
+
+    display: flex;
+    align-items: center;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.collapsible-content {
+    display: block;
+    overflow: hidden;
+    background-color: #f1f1f1;
+
+    transition: height 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000);
+}
+
+.collapsible::before {
+    content: "\f067";
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 30px;
+    font-size: 1.5em;
+
+    transition: transform 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    transform: rotate(0);
+}
+
+.collapsible.active::before {
+    transform: rotate(90deg);
+}
+
+.copyright p {
+    font-size: 3em;
+    text-align: left;
+}

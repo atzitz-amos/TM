@@ -213,3 +213,6 @@ def translate():
                         one=True) or flask.abort(400)
     json_res["s_type"] = query_db("SELECT s_type FROM source_sentences WHERE id=?", (id_,), one=True)["s_type"]
     return json_res
+
+
+app.run()

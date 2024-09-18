@@ -306,10 +306,9 @@ async function setupRecording() {
 
 function setupAnimations() {
     let qEl = document.getElementById("content-questions");
-    qEl.style.height = qEl.getBoundingClientRect().height + "px";
-    qEl.style.width = qEl.getBoundingClientRect().width + "px";
-    document.getElementById("content-answers").style.height = qEl.getBoundingClientRect().height + "px";
-    document.getElementById("content-answers").style.width = qEl.getBoundingClientRect().width + "px";
+    let bbox = document.querySelector(".translation-section").getBoundingClientRect();
+    qEl.style.width = bbox.width + "px";
+    document.getElementById("content-answers").style.width = bbox.width + "px";
 
     document.querySelector(".taskbar-icon").addEventListener("click", () => {
         window.location.href = "/choose_theme.html#" + getQueryStringArgument("lang") + "-" + getQueryStringArgument("gender")

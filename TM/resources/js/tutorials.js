@@ -32,6 +32,8 @@ function showTutorialOn(element, content, nextCallback = null, noNext = true) {
     tutorial.querySelector(".tutorial-next").style.visibility = "visible";
     if (noNext && element) {
         tutorial.querySelector(".tutorial-next").style.visibility = "hidden";
+        TUTORIAL_NEXT_CALLBACK = nextCallback || (() => {
+        });
     } else if (nextCallback) {
         TUTORIAL_NEXT_CALLBACK = nextCallback;
     } else {
@@ -365,7 +367,7 @@ const TUTORIALS = [
         triggerRecordingIfNotStarted();
         showTutorialOn(null, "Dites quelque chose.<br><br> <i class='fas fa-exclamation-triangle'></i> Limitez-vous à des questions simples, non composées, auxquelles on peut toujours répondre par oui ou par non. Par exemple, demandez: <i>As-tu mal à la tête?</i> au lieu de <i>Tu as des douleurs vers la tête, la nuque?</i>.", () => {
             shakeTutorial();
-        }, false);
+        });
         preventAllClicksExcept(null, () => {
             shakeTutorial();
         });
@@ -599,6 +601,10 @@ function triggerTutorialHook(hook) {
     } else if (hook === "recording_failure" && tutorialCurrentStep === 15) {
         shakeTutorial();
         showTutorialOn(null, "Désolé, je n'ai pas compris ce que vous avez dit. Essayez de parler plus clairement.", () => {
+            triggerRecordingIfNotStarted();
+            showTutorialOn(null, "Dites quelque chose.<br><br> <i class='fas fa-exclamation-triangle'></i> Limitez-vous à des questions simples, non composées, auxquelles on peut toujours répondre par oui ou par non. Par exemple, demandez: <i>As-tu mal à la tête?</i> au lieu de <i>Tu as des douleurs vers la tête, la nuque?</i>.", () => {
+                shakeTutorial();
+            });
         });
     } else if (hook === "restart") {
         tutorialCurrentStep = 0;
