@@ -73,6 +73,11 @@ def index():
     return flask.render_template("index.html")
 
 
+@app.route("/about.html")
+def about():
+    return flask.render_template("about.html")
+
+
 @app.route("/choose_gender.html")
 def choose_gender():
     return flask.render_template("choose_gender.html")

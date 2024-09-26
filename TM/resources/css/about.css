@@ -40,7 +40,7 @@ p a {
 
 .collapsible-content {
     display: block;
-    overflow: hidden;
+    overflow: scroll;
     background-color: #f1f1f1;
 
     transition: height 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000);

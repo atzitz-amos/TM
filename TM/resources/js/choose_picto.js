@@ -30,7 +30,9 @@ function setupTaskbar() {
     document.querySelector(".taskbar-icon").addEventListener("click", () => {
         window.location.href = "/translation.html?lang=" + getQueryStringArgument("target") + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
     });
-
+    document.querySelector(".footer-main-button").addEventListener("click", () => {
+        window.location.href = "/translation.html?lang=" + getQueryStringArgument("target") + "&gender=" + getQueryStringArgument("gender") + "&theme=" + getQueryStringArgument("theme");
+    });
 }
 
 function setupPicto() {
