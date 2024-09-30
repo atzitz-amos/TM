@@ -10,6 +10,15 @@ from TM.parser import Parser
 CONFIG_JSON = json.load(open("resources/data/config/config.json", "r"))
 TRANSLATIONS_FILEPATH = "resources/data/config/translations.xml"
 
+THEME_DESCRIPTIONS = [
+    "Hat dein Problem mit deinen Eltern zu tun?",
+    "Hat dein Problem mit deinen Freunden zu tun?",
+    "Hat dein Problem mit Emotionen zu tun?",
+    "Fühlst du dich unwohl?",
+    "Hat dein Problem mit Toiletten zu tun?",
+    "Willst du mir etwas anderes erzählen oder hast du etwas nicht verstanden?",
+]
+
 
 def setup_themes(path, conn):
     themes = CONFIG_JSON["config.themes"]
@@ -18,7 +27,7 @@ def setup_themes(path, conn):
         [(x["id"], x["name"], x["resources.audio"], x["resources.image"]) for x in themes])
 
     for theme in themes:
-        gtts.gTTS(text=theme["name"], lang="de").save(f"{path}/theme/{theme["id"]}.mp3")
+        gtts.gTTS(text=THEME_DESCRIPTIONS[theme["id"]], lang="de").save(f"{path}/theme/{theme["id"]}.mp3")
 
 
 def setup_languages(conn):

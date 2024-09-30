@@ -38,6 +38,11 @@
 .box-icon-holder {
     font-size: 12em;
     color: black;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+
 }
 
 .box-name {
@@ -45,6 +50,10 @@
 
     text-align: center;
     z-index: 10;
+}
+
+.box-name:nth-child(1) {
+    font-size: 4em;
 }
 
 .speakable {
