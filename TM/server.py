@@ -23,7 +23,7 @@ print(allowed_files)
 
 DB_PATH = "./resources/data/db.db"
 
-should_setup = False
+should_setup = True
 should_rebuild_audio = False
 should_retrain = False
 if should_setup:  # Set to false after first run to remove the necessity of another configuration
@@ -189,6 +189,7 @@ def recognize():
         return flask.abort(400)
     audio.save("./resources/temp/audio.ogg")
     try:
+        pydub.AudioSegment
         pydub.AudioSegment.from_file("./resources/temp/audio.ogg").export('./resources/temp/audio.wav', format="wav")
     except CouldntDecodeError:
         return flask.abort(400)
@@ -220,4 +221,4 @@ def translate():
     return json_res
 
 
-app.run()
+app.run("0.0.0.0")

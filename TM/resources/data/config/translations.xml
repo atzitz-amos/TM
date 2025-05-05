@@ -170,18 +170,34 @@
     <entry source-id="56">
         <target lang="DE" resource-audio="/audio/translations/DE/56.mp3">Sie werden bald kommen.</target>
     </entry>
-    <entry source-id="57"/>
+    <entry source-id="57">
+        <target lang="DE" resource-audio="/audio/translations/DE/57.mp3">Bist du wütend?</target>
+    </entry>
     <entry source-id="58">
         <target lang="DE" resource-audio="/audio/translations/DE/58.mp3">Hast du Angst?</target>
     </entry>
     <entry source-id="59">
         <target lang="DE" resource-audio="/audio/translations/DE/59.mp3">Bist du traurig?</target>
     </entry>
-    <entry source-id="60"/>
+    <entry source-id="60">
+        <target lang="DE" resource-audio="/audio/translations/DE/60.mp3">Juckt es dich irgendwo?</target>
+    </entry>
     <entry source-id="61">
         <target lang="DE" resource-audio="/audio/translations/DE/61.mp3">Hast du etwas verloren?</target>
     </entry>
-    <entry source-id="62"/>
-    <entry source-id="63"/>
-    <entry source-id="64"/>
+    <entry source-id="62">
+        <target lang="DE" resource-audio="/audio/translations/DE/62.mp3">Mach dir keine Sorgen, das machen wir wieder sauber!</target>
+    </entry>
+    <entry source-id="63">
+        <target lang="DE" resource-audio="/audio/translations/DE/63.mp3">Atme ruhig, es wird alles gut.</target>
+    </entry>
+    <entry source-id="64">
+        <target lang="DE" resource-audio="/audio/translations/DE/64.mp3">Du musst dringend etwas trinken.</target>
+    </entry>
+    <entry source-id="65">
+        <target lang="DE" resource-audio="/audio/translations/DE/65.mp3">Hast du etwas verloren?</target>
+    </entry>
+    <entry source-id="66">
+        <target lang="DE" resource-audio="/audio/translations/DE/66.mp3">Willst du mir etwas zeigen?</target>
+    </entry>
 </source>
